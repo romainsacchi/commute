@@ -1,5 +1,5 @@
 package:
-  name: carculator
+  name: commute
   version: {{ environ['VERSION'] }}
 
 source:
@@ -33,10 +33,10 @@ requirements:
 
 test:
   imports:
-    - carculator
+    - commute
 
 about:
-  home: https://github.com/romainsacchi/carculator
+  home: https://github.com/romainsacchi/commute
   license: BSD License
-  summary: 'Life Cycle Assessment for passenger cars.'
+  summary: 'Life Cycle Assessment for passenger and freight transport.'
 license_family: BSD

@@ -1454,7 +1454,7 @@ class InventoryCalculation:
         self,
         presamples=False,
         ecoinvent_version="3.8",
-        db_name="carculator db",
+        db_name="commute db",
         create_vehicle_datasets=True,
     ):
         """
@@ -1586,7 +1586,7 @@ class InventoryCalculation:
         self,
         presamples=False,
         ecoinvent_version="3.8",
-        db_name="carculator db",
+        db_name="commute db",
         create_vehicle_datasets=True,
     ):
         """
@@ -1869,7 +1869,7 @@ class InventoryCalculation:
         self.resize_A_matrix_for_export()
 
         filepath = ExportInventory(
-            self.A, self.rev_inputs, db_name=filename or "carculator db"
+            self.A, self.rev_inputs, db_name=filename or "commute db"
         ).write_lci_to_excel(
             directory=directory,
             ecoinvent_version=ecoinvent_version,

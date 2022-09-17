@@ -13,7 +13,7 @@ this_directory = Path(__file__).parent
 README = (this_directory / "README.md").read_text()
 
 # Probably should be changed, __init__.py is no longer required for Python 3
-for dirpath, dirnames, filenames in os.walk("carculator"):
+for dirpath, dirnames, filenames in os.walk("commute"):
     # Ignore dirnames that start with '.'
     if "__init__.py" in filenames:
         pkg = dirpath.replace(os.path.sep, ".")
@@ -34,12 +34,12 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="carculator",
-    version="1.7.0",
+    name="commute",
+    version="1.0.0",
     packages=packages,
-    author="Romain Sacchi <romain.sacchi@psi.ch>, Chris Mutel <christopher.mutel@psi.ch>",
+    author="Romain Sacchi <romain.sacchi@psi.ch>",
     license=open("LICENSE").read(),
-    package_data={"carculator": package_files(os.path.join("carculator", "data"))},
+    package_data={"commute": package_files(os.path.join("commute", "data"))},
     install_requires=[
         "pandas",
         "xarray",
@@ -52,8 +52,8 @@ setup(
         "wurst",
         "pyyaml",
     ],
-    url="https://github.com/romainsacchi/carculator",
-    description="Prospective environmental and economic life cycle assessment of vehicles made blazing fast",
+    url="https://github.com/romainsacchi/commute",
+    description="Prospective environmental and economic life cycle assessment of passenger and freight transport",
     long_description_content_type="text/markdown",
     long_description=README,
     classifiers=[

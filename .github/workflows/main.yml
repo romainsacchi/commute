@@ -76,7 +76,7 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest --cov=carculator
+          pytest --cov=commute
           coveralls
         env:
           GITHUB_TOKEN: ${{ secrets.COVERALLS }}
@@ -111,7 +111,7 @@ jobs:
 
         run: |
 
-          PKG_NAME=carculator
+          PKG_NAME=commute
           USER=romainsacchi
           conda install anaconda-client
           conda install conda-build

@@ -305,7 +305,7 @@ class ExportInventory:
 
     """
 
-    def __init__(self, array, indices, db_name="carculator export"):
+    def __init__(self, array, indices, db_name="commute export"):
         self.array: xr.DataArray = array
         self.indices: Dict[int, Tuple[str, str, str, str]] = indices
 
@@ -994,7 +994,7 @@ class ExportInventory:
                 }
 
                 frmt = lambda x: bold if row[0] in highlighted else None
-                sheet = workbook.add_worksheet("carculator export")
+                sheet = workbook.add_worksheet("commute export")
 
                 for row_index, row in enumerate(data):
                     for col_index, value in enumerate(row):
@@ -1127,7 +1127,7 @@ class ExportInventory:
         headers = [
             "{SimaPro 9.1.1.1}",
             "{processes}",
-            "{Project: carculator import"
+            "{Project: commute import"
             + f"{datetime.datetime.today():%d.%m.%Y}"
             + "}",
             "{CSV Format version: 9.0.0}",
@@ -1291,7 +1291,7 @@ class ExportInventory:
                     rows.append([main_category])
 
                 if item == "Generator":
-                    rows.append(["carculator " + str(__version__)])
+                    rows.append(["commute " + str(__version__)])
 
                 if item == "Geography":
                     rows.append([a["location"]])
@@ -1320,7 +1320,7 @@ class ExportInventory:
                     rows.append(["https://carculator.psi.ch"])
 
                 if item in "System description":
-                    rows.append(["carculator"])
+                    rows.append(["commute"])
 
                 if item in "Allocation rules":
                     rows.append(
@@ -1924,7 +1924,7 @@ class ExportInventory:
         rows.append(["System description"])
         rows.append([])
         rows.append(["Name"])
-        rows.append(["carculator"])
+        rows.append(["commute"])
         rows.append([])
         rows.append(["Category"])
         rows.append(["transport"])
@@ -1983,11 +1983,11 @@ class ExportInventory:
         )
         rows.append([])
         rows.append(["Category"])
-        rows.append(["carculator"])
+        rows.append(["commute"])
         rows.append([])
         rows.append(["Description"])
         description = (
-            "carculator: an open-source tool for prospective environmental and "
+            "commute: an open-source tool for prospective environmental and "
             "economic life cycle assessment of vehicles. When, Where and How can battery-electric "
             "vehicles help reduce greenhouse gas emissions?\n"
         )

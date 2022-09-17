@@ -158,7 +158,7 @@ class NoiseEmissionsModel:
         # convert dBs to Watts (or J/s)
         sound_power = ne.evaluate("(10 ** -12) * (10 ** (total_noise / 10))")
 
-        # If the driving cycle selected is one of the driving cycles for which carculator has specifications,
+        # If the driving cycle selected is one of the driving cycles for which commute has specifications,
         # we use the driving cycle "official" road section types to compartmentalize emissions.
         # If the driving cycle selected is instead specified by the user (passed directly as an array), we used
         # speed levels to compartmentalize emissions.
