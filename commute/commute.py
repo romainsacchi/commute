@@ -1,4 +1,5 @@
 from datetime import date
+
 from .validation import (
     check_driving_cycle,
     check_schema,
