@@ -1,0 +1,845 @@
+# fuel consumption in liters per 100 km,
+# except for BEVs, which are in kWh per 100 km
+#     ICEV-d: 43 MJ/kg, 0.83 kg/L
+#     ICEV-g: 47.5 MJ/kg, 0.639 kg/L
+#     HEV-d: 43 MJ/kg, 0.83 kg/L
+#     ICEV-p: 42.6 MJ/kg, 0.75 kg/L
+#     HEV-p: 42.6 MJ/kg, 0.75 kg/L
+#     BEV: 3.6 MJ/kWh
+#     FCEV: 120 MJ/kg, 0.042 kg/L
+
+---
+Trucks:
+  driving cycle:
+    - Urban delivery
+    - Regional delivery
+    - Long haul
+  energy consumption:
+    ICEV-d:
+      3.5t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 9.1
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 8.3
+        Long haul:
+          min: 20
+          max: 40
+          average: 8.6
+      7.5t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 12.4
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 11.1
+        Long haul:
+          min: 20
+          max: 40
+          average: 11.8
+      18t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 26.7
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 21.1
+        Long haul:
+          min: 20
+          max: 40
+          average: 20.3
+      26t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 35.6
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 27
+        Long haul:
+          min: 20
+          max: 40
+          average: 25
+      32t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 36.7
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 29.9
+        Long haul:
+          min: 20
+          max: 40
+          average: 27.9
+      40t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 41.7
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 32.6
+        Long haul:
+          min: 20
+          max: 40
+          average: 30.6
+    ICEV-g:
+      3.5t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 12.9
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 11.6
+        Long haul:
+          min: 20
+          max: 40
+          average: 12
+      7.5t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 17
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 15.1
+        Long haul:
+          min: 20
+          max: 40
+          average: 16.1
+      18t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 36
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 27.6
+        Long haul:
+          min: 20
+          max: 40
+          average: 32.4
+      26t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 28.6
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 36.4
+        Long haul:
+          min: 20
+          max: 40
+          average: 33.6
+      32t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 49.3
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 40.3
+        Long haul:
+          min: 20
+          max: 40
+          average: 37.8
+      40t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 44
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 43.9
+        Long haul:
+          min: 20
+          max: 40
+          average: 41.4
+    HEV-d:
+      3.5t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 7.6
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 7.3
+        Long haul:
+          min: 20
+          max: 40
+          average: 7.6
+      7.5t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 10.9
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 10.2
+        Long haul:
+          min: 20
+          max: 40
+          average: 10.9
+      18t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 23.4
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 19.3
+        Long haul:
+          min: 20
+          max: 40
+          average: 18.6
+      26t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 33.1
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 25.6
+        Long haul:
+          min: 20
+          max: 40
+          average: 23.8
+      32t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 34.4
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 28.8
+        Long haul:
+          min: 20
+          max: 40
+          average: 26.9
+      40t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 38.7
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 31.1
+        Long haul:
+          min: 20
+          max: 40
+          average: 29.2
+    BEV-depot:
+      3.5t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 28
+      7.5t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 45.1
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 55.2
+      18t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 92.6
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 100.8
+      26t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 127
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 126.7
+      32t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 141.2
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 150.9
+      40t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 155.9
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 160.4
+    PHEV-d:
+      3.5t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 15.2
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 23.8
+        Long haul:
+          min: 20
+          max: 40
+          average: 32.4
+      7.5t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 15.2
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 23.8
+        Long haul:
+          min: 20
+          max: 40
+          average: 32.4
+      18t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 15.2
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 23.8
+        Long haul:
+          min: 20
+          max: 40
+          average: 32.4
+      26t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 15.2
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 23.8
+        Long haul:
+          min: 20
+          max: 40
+          average: 32.4
+      32t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 15.2
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 23.8
+        Long haul:
+          min: 20
+          max: 40
+          average: 32.4
+      40t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 15.2
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 23.8
+        Long haul:
+          min: 20
+          max: 40
+          average: 32.4
+    FCEV:
+      3.5t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 37.2
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 46.4
+        Long haul:
+          min: 20
+          max: 40
+          average: 52.1
+      7.5t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 68.5
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 78.2
+        Long haul:
+          min: 20
+          max: 40
+          average: 89.8
+      18t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 138.9
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 140
+        Long haul:
+          min: 20
+          max: 40
+          average: 144.7
+      26t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 189.1
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 176.4
+        Long haul:
+          min: 20
+          max: 40
+          average: 175.1
+      32t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 210
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 208.7
+        Long haul:
+          min: 20
+          max: 40
+          average: 210.5
+      40t:
+        Urban delivery:
+          min: 10
+          max: 20
+          average: 232.6
+        Regional delivery:
+          min: 15
+          max: 30
+          average: 222.9
+        Long haul:
+          min: 20
+          max: 40
+          average: 223.2
+  lifetime:
+    3.5t:
+      min: 400000
+      max: 1000000
+      average: 700000
+    7.5t:
+      min: 400000
+      max: 1000000
+      average: 700000
+    18t:
+      min: 400000
+      max: 1000000
+      average: 700000
+    26t:
+      min: 400000
+      max: 1000000
+      average: 700000
+    32t:
+      min: 400000
+      max: 1000000
+      average: 700000
+    40t:
+      min: 400000
+      max: 1000000
+      average: 700000
+  annual mileage:
+    3.5t:
+      Urban delivery:
+        min: 10000
+        max: 50000
+        average: 22660
+      Regional delivery:
+        min: 10000
+        max: 50000
+        average: 22660
+      Long haul:
+        min: 10000
+        max: 50000
+        average: 22660
+    7.5t:
+      Urban delivery:
+        min: 10000
+        max: 60000
+        average: 33000
+      Regional delivery:
+        min: 10000
+        max: 60000
+        average: 33000
+      Long haul:
+        min: 10000
+        max: 60000
+        average: 33000
+    18t:
+      Urban delivery:
+        min: 10000
+        max: 80000
+        average: 60000
+      Regional delivery:
+        min: 10000
+        max: 100000
+        average: 78000
+      Long haul:
+        min: 10000
+        max: 130000
+        average: 98000
+    26t:
+      Urban delivery:
+        min: 10000
+        max: 100000
+        average: 60000
+      Regional delivery:
+        min: 10000
+        max: 100000
+        average: 73000
+      Long haul:
+        min: 40000
+        max: 130000
+        average: 108000
+    32t:
+      Urban delivery:
+        min: 10000
+        max: 100000
+        average: 60000
+      Regional delivery:
+        min: 10000
+        max: 100000
+        average: 73000
+      Long haul:
+        min: 40000
+        max: 130000
+        average: 107000
+    40t:
+      Urban delivery:
+        min: 10000
+        max: 100000
+        average: 60000
+      Regional delivery:
+        min: 10000
+        max: 100000
+        average: 68000
+      Long haul:
+        min: 40000
+        max: 150000
+        average: 107000
+  payload:
+    3.5t:
+      Urban delivery:
+        min: 100
+        max: 1500
+        average: 750
+      Regional delivery:
+        min: 100
+        max: 1400
+        average: 750
+      Long haul:
+        min: 100
+        max: 1400
+        average: 1125
+    7.5t:
+      Urban delivery:
+        min: 100
+        max: 3600
+        average: 1750
+      Regional delivery:
+        min: 100
+        max: 3500
+        average: 1750
+      Long haul:
+        min: 100
+        max: 3500
+        average: 2625
+    18t:
+      Urban delivery:
+        min: 100
+        max: 8800
+        average: 2700
+      Regional delivery:
+        min: 100
+        max: 8700
+        average: 3200
+      Long haul:
+        min: 100
+        max: 8600
+        average: 7400
+    26t:
+      Urban delivery:
+        min: 100
+        max: 13600
+        average: 6300
+      Regional delivery:
+        min: 100
+        max: 13600
+        average: 6300
+      Long haul:
+        min: 100
+        max: 13500
+        average: 13400
+    32t:
+      Urban delivery:
+        min: 100
+        max: 20200
+        average: 8755
+      Regional delivery:
+        min: 100
+        max: 20100
+        average: 10300
+      Long haul:
+        min: 100
+        max: 20000
+        average: 13800
+    40t:
+      Urban delivery:
+        min: 100
+        max: 25300
+        average: 8755
+      Regional delivery:
+        min: 100
+        max: 25200
+        average: 10300
+      Long haul:
+        min: 100
+        max: 25100
+        average: 13800
+  number of passengers:
+    3.5t:
+      min: 1
+      max: 2
+      average: 1
+    7.5t:
+      min: 1
+      max: 2
+      average: 1
+    18t:
+      min: 1
+      max: 2
+      average: 1
+    26t:
+      min: 1
+      max: 2
+      average: 1
+    32t:
+      min: 1
+      max: 2
+      average: 1
+    40t:
+      min: 1
+      max: 2
+      average: 1
+  battery type:
+    FCEV:
+      - NMC-622
+      - NMC-811
+      - NCA
+      - LFP
+    HEV-d:
+      - NMC-622
+      - NMC-811
+      - NCA
+      - LFP
+    PHEV-d:
+      - NMC-622
+      - NMC-811
+      - NCA
+      - LFP
+    BEV-depot:
+      - NMC-622
+      - NMC-811
+      - NCA
+      - LFP
+  battery capacity:
+    BEV-depot:
+      3.5t:
+        Urban delivery:
+          min: 40
+          max: 120
+          average: 52
+      7.5t:
+        Urban delivery:
+          min: 50
+          max: 150
+          average: 85
+        Regional delivery:
+          min: 200
+          max: 350
+          average: 276
+      18t:
+        Urban delivery:
+          min: 130
+          max: 260
+          average: 174
+        Regional delivery:
+          min: 400
+          max: 700
+          average: 504
+      26t:
+        Urban delivery:
+          min: 150
+          max: 350
+          average: 238
+        Regional delivery:
+          min: 400
+          max: 700
+          average: 633
+      32t:
+        Urban delivery:
+          min: 150
+          max: 350
+          average: 265
+        Regional delivery:
+          min: 500
+          max: 800
+          average: 755
+      40t:
+        Urban delivery:
+          min: 150
+          max: 400
+          average: 292
+        Regional delivery:
+          min: 700
+          max: 1000
+          average: 802
+  energy storage replacement:
+    BEV-depot:
+      3.5t:
+        min: 0
+        max: 2
+        average: 1
+      7.5t:
+        min: 0
+        max: 2
+        average: 1
+      18t:
+        min: 0
+        max: 2
+        average: 1
+      26t:
+        min: 0
+        max: 2
+        average: 1
+      32t:
+        min: 0
+        max: 2
+        average: 1
+      40t:
+        min: 0
+        max: 2
+        average: 1
+    FCEV:
+      3.5t:
+        min: 0
+        max: 2
+        average: 1
+      7.5t:
+        min: 0
+        max: 2
+        average: 1
+      18t:
+        min: 0
+        max: 2
+        average: 1
+      26t:
+        min: 0
+        max: 2
+        average: 1
+      32t:
+        min: 0
+        max: 2
+        average: 1
+      40t:
+        min: 0
+        max: 2
+        average: 1
+  power:
+    3.5t:
+      min: 50
+      max: 200
+      average: 120
+    7.5t:
+      min: 70
+      max: 200
+      average: 140
+    18t:
+      min: 180
+      max: 400
+      average: 320
+    26t:
+      min: 260
+      max: 420
+      average: 367
+    32t:
+      min: 220
+      max: 500
+      average: 340
+    40t:
+      min: 270
+      max: 620
+      average: 420
+  curb mass:
+    3.5t:
+      min: 1500
+      max: 2500
+      average: 2070
+    7.5t:
+      min: 2900
+      max: 4500
+      average: 3970
+    18t:
+      min: 8700
+      max: 12500
+      average: 9650
+    26t:
+      min: 11700
+      max: 17000
+      average: 12950
+    32t:
+      min: 11500
+      max: 17000
+      average: 12350
+    40t:
+      min: 14000
+      max: 20000
+      average: 15300

@@ -1,12 +1,6 @@
-scipy
-pyprind
-pandas
-xarray
-numpy
-klausen
-xlrd
-numexpr
-bw2io
-pycountry
-wurst
+carculator
+carculator_bus
+carculator_truck
+carculator_two_wheeler
+schema
 pyyaml

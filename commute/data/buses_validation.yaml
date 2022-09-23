@@ -1,0 +1,393 @@
+# fuel consumption in liters per 100 km,
+# except for BEVs, which are in kWh per 100 km
+#     ICEV-d: 43 MJ/kg, 0.83 kg/L
+#     ICEV-g: 47.5 MJ/kg, 0.639 kg/L
+#     HEV-d: 43 MJ/kg, 0.83 kg/L
+#     ICEV-p: 42.6 MJ/kg, 0.75 kg/L
+#     HEV-p: 42.6 MJ/kg, 0.75 kg/L
+#     BEV: 3.6 MJ/kWh
+#     FCEV: 120 MJ/kg, 0.042 kg/L
+---
+
+Bus:
+  energy consumption:
+    ICEV-d:
+      9m:
+        min: 15
+        max: 30
+        average: 23.8
+      13m-city:
+        min: 25
+        max: 45
+        average: 35
+      13m-coach:
+        min: 25
+        max: 45
+        average: 24.9
+      13m-city-double:
+        min: 35
+        max: 60
+        average: 48.4
+      13m-coach-double:
+        min: 20
+        max: 40
+        average: 31.2
+      18m:
+        min: 35
+        max: 60
+        average: 47.5
+    ICEV-g:
+      9m:
+        min: 20
+        max: 40
+        average: 32.4
+      13m-city:
+        min: 30
+        max: 55
+        average: 45.2
+      13m-coach:
+        min: 30
+        max: 55
+        average: 38
+      13m-city-double:
+        min: 40
+        max: 70
+        average: 59.7
+      13m-coach-double:
+        min: 30
+        max: 55
+        average: 47.5
+      18m:
+        min: 40
+        max: 70
+        average: 58.6
+    HEV-d:
+      9m:
+        min: 15
+        max: 30
+        average: 22.3
+      13m-city:
+        min: 25
+        max: 45
+        average: 34.2
+      13m-coach:
+        min: 15
+        max: 30
+        average: 23.2
+      13m-city-double:
+        min: 35
+        max: 60
+        average: 45.1
+      13m-coach-double:
+        min: 20
+        max: 40
+        average: 29.1
+      18m:
+        min: 35
+        max: 60
+        average: 44.2
+    BEV-depot:
+      9m:
+        min: 80
+        max: 140
+        average: 108.3
+      13m-city:
+        min: 130
+        max: 200
+        average: 170.3
+      13m-coach:
+        min: 0
+        max: 0
+        average: 0
+      13m-city-double:
+        min: 160
+        max: 250
+        average: 224.5
+      13m-coach-double:
+        min: 0
+        max: 0
+        average: 0
+      18m:
+        min: 180
+        max: 250
+        average: 225.7
+    BEV-opp:
+      9m:
+        min: 80
+        max: 140
+        average: 102.1
+      13m-city:
+        min: 130
+        max: 200
+        average: 161.3
+      13m-coach:
+        min: 0
+        max: 0
+        average: 0
+      13m-city-double:
+        min: 160
+        max: 250
+        average: 213.3
+      13m-coach-double:
+        min: 0
+        max: 0
+        average: 0
+      18m:
+        min: 180
+        max: 250
+        average: 210.6
+    BEV-motion:
+      18m:
+        min: 180
+        max: 250
+        average: 203
+    FCEV:
+      9m:
+        min: 100
+        max: 150
+        average: 130
+      13m-city:
+        min: 180
+        max: 240
+        average: 207.85
+      13m-coach:
+        min: 80
+        max: 150
+        average: 125.48
+      13m-city-double:
+        min: 250
+        max: 300
+        average: 274.76
+      13m-coach-double:
+        min: 130
+        max: 190
+        average: 161.9
+      18m:
+        min: 250
+        max: 300
+        average: 272.14
+  lifetime:
+    9m:
+      min: 400000
+      max: 1000000
+      average: 700000
+    13m-city:
+      min: 400000
+      max: 1000000
+      average: 700000
+    13m-coach:
+      min: 400000
+      max: 1000000
+      average: 700000
+    13m-city-double:
+      min: 400000
+      max: 1000000
+      average: 700000
+    13m-coach-double:
+      min: 400000
+      max: 1000000
+      average: 700000
+    18m:
+      min: 400000
+      max: 1000000
+      average: 700000
+  annual mileage:
+    9m:
+      min: 5000
+      max: 100000
+      average: 50000
+    13m-city:
+      min: 5000
+      max: 100000
+      average: 50000
+    13m-coach:
+      min: 5000
+      max: 100000
+      average: 50000
+    13m-city-double:
+      min: 5000
+      max: 100000
+      average: 50000
+    13m-coach-double:
+      min: 5000
+      max: 100000
+      average: 50000
+    18m:
+      min: 5000
+      max: 100000
+      average: 50000
+  number of passengers:
+    9m:
+      min: 1
+      max: 34
+      average: 5
+    13m-city:
+      min: 1
+      max: 64
+      average: 10
+    13m-coach:
+      min: 1
+      max: 55
+      average: 21
+    13m-city-double:
+      min: 1
+      max: 83
+      average: 13
+    13m-coach-double:
+      min: 1
+      max: 70
+      average: 26
+    18m:
+      min: 1
+      max: 150
+      average: 19
+  battery type:
+    FCEV:
+      - NMC-622
+      - NMC-811
+      - NCA
+      - LFP
+    HEV-d:
+      - NMC-622
+      - NMC-811
+      - NCA
+      - LFP
+    BEV-depot:
+      - NMC-622
+      - NMC-811
+      - NCA
+      - LFP
+    BEV-opp:
+      - LTO
+    BEV-motion:
+      - LTO
+  battery capacity:
+    BEV-depot:
+      9m:
+        min: 150
+        max: 300
+        average: 257
+      13m-city:
+        min: 400
+        max: 600
+        average: 399
+      13m-city-double:
+        min: 400
+        max: 800
+        average: 533
+      18m:
+        min: 400
+        max: 800
+        average: 534
+    BEV-opp:
+      9m:
+        min: 25
+        max: 75
+        average: 54
+      13m-city:
+        min: 50
+        max: 110
+        average: 85
+      13m-city-double:
+        min: 80
+        max: 140
+        average: 112
+      18m:
+        min: 80
+        max: 140
+        average: 111
+    BEV-motion:
+      18m:
+        min: 15
+        max: 80
+        average: 59
+  energy storage replacement:
+    BEV-depot:
+      9m:
+        min: 0
+        max: 2
+        average: 1
+      13m-city:
+        min: 0
+        max: 2
+        average: 1
+      13m-city-double:
+        min: 0
+        max: 2
+        average: 1
+      18m:
+        min: 0
+        max: 2
+        average: 1
+    BEV-opp:
+      9m:
+        min: 0
+        max: 2
+        average: 1
+      13m-city:
+        min: 0
+        max: 2
+        average: 1
+      13m-city-double:
+        min: 0
+        max: 2
+        average: 1
+      18m:
+        min: 0
+        max: 2
+        average: 1
+    BEV-motion:
+      18m:
+        min: 0
+        max: 3
+        average: 2
+  power:
+    9m:
+      min: 100
+      max: 150
+      average: 128
+    13m-city:
+      min: 100
+      max: 300
+      average: 204
+    13m-coach:
+      min: 200
+      max: 350
+      average: 280
+    13m-city-double:
+      min: 200
+      max: 350
+      average: 260
+    13m-coach-double:
+      min: 100
+      max: 300
+      average: 200
+    18m:
+      min: 200
+      max: 350
+      average: 320
+  curb mass:
+    9m:
+      min: 6000
+      max: 10000
+      average: 8100
+    13m-city:
+      min: 10000
+      max: 15000
+      average: 12400
+    13m-coach:
+      min: 10000
+      max: 15000
+      average: 13300
+    13m-city-double:
+      min: 14000
+      max: 20000
+      average: 17360
+    13m-coach-double:
+      min: 14000
+      max: 20000
+      average: 17300
+    18m:
+      min: 14000
+      max: 20000
+      average: 16330

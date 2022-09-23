@@ -1,0 +1,729 @@
+# fuel consumption in liters per 100 km,
+# except for BEVs, which are in kWh per 100 km
+#     ICEV-d: 43 MJ/kg, 0.83 kg/L
+#     ICEV-g: 47.5 MJ/kg, 0.639 kg/L
+#     HEV-d: 43 MJ/kg, 0.83 kg/L
+#     ICEV-p: 42.6 MJ/kg, 0.75 kg/L
+#     HEV-p: 42.6 MJ/kg, 0.75 kg/L
+#     BEV: 3.6 MJ/kWh
+#     FCEV: 120 MJ/kg, 0.042 kg/L
+
+---
+Car:
+  driving cycle:
+    - WLTC
+    - WLTC 3.1
+    - WLTC 3.2
+    - WLTC 3.3
+    - WLTC 3.4
+  energy consumption:
+    ICEV-p:
+      Mini:
+        min: 3
+        max: 8
+        average: 4.83
+      Small:
+        min: 3
+        max: 9
+        average: 5.85
+      Lower medium:
+        min: 3
+        max: 10
+        average: 6.73
+      Medium:
+        min: 3
+        max: 11
+        average: 7.68
+      Medium SUV:
+        min: 3
+        max: 11
+        average: 7.60
+      Large:
+        min: 3
+        max: 11
+        average: 8.45
+      Large SUV:
+        min: 5
+        max: 14
+        average: 9.83
+      Van:
+        min: 5
+        max: 14
+        average: 8.49
+    ICEV-d:
+      Mini:
+        min: 3
+        max: 8
+        average: 4.02
+      Small:
+        min: 3
+        max: 9
+        average: 4.88
+      Lower medium:
+        min: 3
+        max: 10
+        average: 5.53
+      Medium:
+        min: 3
+        max: 11
+        average: 6.25
+      Medium SUV:
+        min: 3
+        max: 11
+        average: 6.24
+      Large:
+        min: 3
+        max: 11
+        average: 6.87
+      Large SUV:
+        min: 4
+        max: 12
+        average: 8.01
+      Van:
+        min: 4
+        max: 12
+        average: 7.05
+    ICEV-g:
+      Mini:
+        min: 3
+        max: 9
+        average: 5.27
+      Small:
+        min: 3
+        max: 9
+        average: 6.25
+      Lower medium:
+        min: 3
+        max: 11
+        average: 7.38
+      Medium:
+        min: 3
+        max: 11
+        average: 8.44
+      Medium SUV:
+        min: 4
+        max: 12
+        average: 8.37
+      Large:
+        min: 4
+        max: 12
+        average: 9.38
+      Large SUV:
+        min: 4
+        max: 12
+        average: 10.87
+      Van:
+        min: 4
+        max: 12
+        average: 9.31
+    HEV-p:
+      Mini:
+        min: 2
+        max: 8
+        average: 3.78
+      Small:
+        min: 2
+        max: 8
+        average: 4.45
+      Lower medium:
+        min: 2
+        max: 9
+        average: 5.12
+      Medium:
+        min: 2
+        max: 9
+        average: 5.57
+      Medium SUV:
+        min: 2
+        max: 9
+        average: 5.7
+      Large:
+        min: 3
+        max: 9
+        average: 6.05
+      Large SUV:
+        min: 4
+        max: 12
+        average: 7.09
+      Van:
+        min: 4
+        max: 12
+        average: 6.88
+    HEV-d:
+      Mini:
+        min: 2
+        max: 8
+        average: 3.33
+      Small:
+        min: 2
+        max: 8
+        average: 3.95
+      Lower medium:
+        min: 2
+        max: 9
+        average: 4.51
+      Medium:
+        min: 2
+        max: 9
+        average: 4.9
+      Medium SUV:
+        min: 2
+        max: 9
+        average: 5.02
+      Large:
+        min: 3
+        max: 9
+        average: 5.33
+      Large SUV:
+        min: 4
+        max: 12
+        average: 6.24
+      Van:
+        min: 4
+        max: 12
+        average: 6.05
+    FCEV:
+      Mini:
+        min: 15
+        max: 25
+        average: 19.52
+      Small:
+        min: 15
+        max: 30
+        average: 21.66
+      Lower medium:
+        min: 15
+        max: 35
+        average: 25
+      Medium:
+        min: 20
+        max: 35
+        average: 27.14
+      Medium SUV:
+        min: 25
+        max: 40
+        average: 28.57
+      Large:
+        min: 25
+        max: 45
+        average: 30
+      Large SUV:
+        min: 25
+        max: 45
+        average: 35
+      Van:
+        min: 35
+        max: 45
+        average: 34.76
+    BEV:
+      Micro:
+        min: 8
+        max: 14
+        average: 10.4
+      Mini:
+        min: 9
+        max: 15
+        average: 12
+      Small:
+        min: 10
+        max: 18
+        average: 14
+      Lower medium:
+        min: 12
+        max: 20
+        average: 16
+      Medium:
+        min: 12
+        max: 22
+        average: 18
+      Medium SUV:
+        min: 12
+        max: 24
+        average: 19
+      Large:
+        min: 14
+        max: 25
+        average: 20
+      Large SUV:
+        min: 14
+        max: 26
+        average: 24
+      Van:
+        min: 14
+        max: 26
+        average: 22
+  lifetime:
+    Micro:
+      min: 30000
+      max: 200000
+      average: 60000
+    Mini:
+      min: 50000
+      max: 300000
+      average: 200000
+    Small:
+      min: 50000
+      max: 300000
+      average: 200000
+    Lower medium:
+      min: 50000
+      max: 300000
+      average: 200000
+    Medium:
+      min: 50000
+      max: 300000
+      average: 200000
+    Medium SUV:
+      min: 50000
+      max: 300000
+      average: 200000
+    Large:
+      min: 50000
+      max: 300000
+      average: 200000
+    Large SUV:
+      min: 50000
+      max: 300000
+      average: 200000
+    Van:
+      min: 50000
+      max: 300000
+      average: 200000
+  annual mileage:
+    Micro:
+      min: 1000
+      max: 40000
+      average: 6000
+    Mini:
+      min: 1000
+      max: 40000
+      average: 12000
+    Small:
+      min: 1000
+      max: 40000
+      average: 12000
+    Lower medium:
+      min: 1000
+      max: 40000
+      average: 12000
+    Medium:
+      min: 1000
+      max: 40000
+      average: 12000
+    Medium SUV:
+      min: 1000
+      max: 40000
+      average: 12000
+    Large:
+      min: 1000
+      max: 40000
+      average: 12000
+    Large SUV:
+      min: 1000
+      max: 40000
+      average: 12000
+    Van:
+      min: 1000
+      max: 40000
+      average: 12000
+  number of passengers:
+    Micro:
+      min: 1
+      max: 2
+      average: 1
+    Mini:
+      min: 1
+      max: 4
+      average: 1.5
+    Small:
+      min: 1
+      max: 5
+      average: 1.5
+    Lower medium:
+      min: 1
+      max: 5
+      average: 1.5
+    Medium:
+      min: 1
+      max: 5
+      average: 1.5
+    Medium SUV:
+      min: 1
+      max: 5
+      average: 1.5
+    Large:
+      min: 1
+      max: 5
+      average: 1.5
+    Large SUV:
+      min: 1
+      max: 7
+      average: 1.5
+    Van:
+      min: 1
+      max: 9
+      average: 1.5
+  battery type:
+    HEV-p:
+      - NMC-111
+      - NMC-622
+      - NMC-811
+    HEV-d:
+      - NMC-111
+      - NMC-622
+      - NMC-811
+    PHEV-p:
+      - NMC-111
+      - NMC-622
+      - NMC-811
+    PHEV-d:
+      - NMC-111
+      - NMC-622
+      - NMC-811
+    BEV:
+      - NMC-111
+      - NMC-622
+      - NMC-811
+      - NCA
+      - LFP
+  battery capacity:
+    BEV:
+      Micro:
+        min: 5
+        max: 20
+        average: 16.8
+      Mini:
+        min: 10
+        max: 30
+        average: 26.6
+      Small:
+        min: 25
+        max: 50
+        average: 41
+      Lower medium:
+        min: 30
+        max: 60
+        average: 50
+      Medium:
+        min: 40
+        max: 65
+        average: 56
+      Medium SUV:
+        min: 45
+        max: 75
+        average: 64
+      Large:
+        min: 50
+        max: 90
+        average: 81
+      Large SUV:
+        min: 80
+        max: 100
+        average: 92
+      Van:
+        min: 50
+        max: 90
+        average: 81
+    HEV-p:
+      Mini:
+        min: 0.25
+        max: 1
+        average: 0.5
+      Small:
+        min: 0.5
+        max: 1.5
+        average: 1
+      Lower medium:
+        min: 1
+        max: 2
+        average: 1.5
+      Medium:
+        min: 1
+        max: 3
+        average: 2
+      Medium SUV:
+        min: 1
+        max: 3
+        average: 2
+      Large:
+        min: 2
+        max: 4
+        average: 3
+      Large SUV:
+        min: 3
+        max: 5
+        average: 4
+      Van:
+        min: 2
+        max: 4
+        average: 3
+    HEV-d:
+      Mini:
+        min: 0.25
+        max: 1
+        average: 0.5
+      Small:
+        min: 0.5
+        max: 1.5
+        average: 1
+      Lower medium:
+        min: 1
+        max: 2
+        average: 1.5
+      Medium:
+        min: 1
+        max: 3
+        average: 2
+      Medium SUV:
+        min: 1
+        max: 3
+        average: 2
+      Large:
+        min: 2
+        max: 4
+        average: 3
+      Large SUV:
+        min: 3
+        max: 5
+        average: 4
+      Van:
+        min: 2
+        max: 4
+        average: 3
+    PHEV-p:
+      Mini:
+        min: 3
+        max: 10
+        average: 7
+      Small:
+        min: 3
+        max: 10
+        average: 8
+      Lower medium:
+        min: 4
+        max: 12
+        average: 10.6
+      Medium:
+        min: 5
+        max: 15
+        average: 13
+      Medium SUV:
+        min: 10
+        max: 20
+        average: 19
+      Large:
+        min: 5
+        max: 20
+        average: 18
+      Large SUV:
+        min: 5
+        max: 20
+        average: 19
+      Van:
+        min: 5
+        max: 20
+        average: 18
+    PHEV-d:
+      Mini:
+        min: 3
+        max: 10
+        average: 7
+      Small:
+        min: 3
+        max: 10
+        average: 8
+      Lower medium:
+        min: 4
+        max: 12
+        average: 10.6
+      Medium:
+        min: 5
+        max: 15
+        average: 13
+      Medium SUV:
+        min: 10
+        max: 20
+        average: 19
+      Large:
+        min: 5
+        max: 20
+        average: 18
+      Large SUV:
+        min: 5
+        max: 20
+        average: 19
+      Van:
+        min: 5
+        max: 20
+        average: 18
+  energy storage replacement:
+    BEV:
+      Micro:
+        min: 0
+        max: 1
+        average: 0
+      Mini:
+        min: 0
+        max: 1
+        average: 0
+      Small:
+        min: 0
+        max: 1
+        average: 0
+      Lower medium:
+        min: 0
+        max: 1
+        average: 0
+      Medium:
+        min: 0
+        max: 1
+        average: 0
+      Medium SUV:
+        min: 0
+        max: 1
+        average: 0
+      Large:
+        min: 0
+        max: 1
+        average: 0
+      Large SUV:
+        min: 0
+        max: 1
+        average: 0
+      Van:
+        min: 0
+        max: 1
+        average: 0
+  electric utility factor:
+    PHEV-p:
+      Small:
+        min: 0
+        max: 0.75
+        average: 0.47
+      Lower medium:
+        min: 0
+        max: 0.75
+        average: 0.47
+      Medium:
+        min: 0
+        max: 0.75
+        average: 0.47
+      Medium SUV:
+        min: 0
+        max: 0.75
+        average: 0.47
+      Large:
+        min: 0
+        max: 0.75
+        average: 0.47
+      Large SUV:
+        min: 0
+        max: 0.75
+        average: 0.47
+      Van:
+        min: 0
+        max: 0.75
+        average: 0.47
+    PHEV-d:
+      Small:
+        min: 0
+        max: 0.75
+        average: 0.47
+      Lower medium:
+        min: 0
+        max: 0.75
+        average: 0.47
+      Medium:
+        min: 0
+        max: 0.75
+        average: 0.47
+      Medium SUV:
+        min: 0
+        max: 0.75
+        average: 0.47
+      Large:
+        min: 0
+        max: 0.75
+        average: 0.47
+      Large SUV:
+        min: 0
+        max: 0.75
+        average: 0.47
+      Van:
+        min: 0
+        max: 0.75
+        average: 0.47
+  power:
+    Micro:
+      min: 10
+      max: 30
+      average: 18.5
+    Mini:
+      min: 40
+      max: 80
+      average: 58
+    Small:
+      min: 50
+      max: 100
+      average: 80
+    Lower medium:
+      min: 80
+      max: 140
+      average: 100
+    Medium:
+      min: 100
+      max: 150
+      average: 134
+    Medium SUV:
+      min: 100
+      max: 150
+      average: 118
+    Large:
+      min: 120
+      max: 200
+      average: 151
+    Large SUV:
+      min: 120
+      max: 220
+      average: 167
+    Van:
+      min: 100
+      max: 160
+      average: 110
+  curb mass:
+    Micro:
+      min: 400
+      max: 700
+      average: 530
+    Mini:
+      min: 700
+      max: 1200
+      average: 970
+    Small:
+      min: 1200
+      max: 1400
+      average: 1230
+    Lower medium:
+      min: 1400
+      max: 1800
+      average: 1440
+    Medium:
+      min: 1500
+      max: 1800
+      average: 1670
+    Medium SUV:
+      min: 1200
+      max: 1800
+      average: 1570
+    Large:
+      min: 1500
+      max: 2000
+      average: 1890
+    Large SUV:
+      min: 1600
+      max: 2400
+      average: 2220
+    Van:
+      min: 1500
+      max: 2000
+      average: 1690

@@ -1,0 +1,731 @@
+Two wheeler:
+  Kick-scooter:
+    powertrain:
+      BEV:
+        year:
+          min: 2015
+          max: 2050
+  Bicycle <25:
+    powertrain:
+      Human:
+        year:
+          min: 2000
+          max: 2050
+      BEV:
+        year:
+          min: 2010
+          max: 2050
+  Bicycle cargo:
+    powertrain:
+      BEV:
+        year:
+          min: 2015
+          max: 2050
+  Bicycle <45:
+    powertrain:
+      BEV:
+        year:
+          min: 2015
+          max: 2050
+  Moped <4kW:
+    powertrain:
+      ICEV-p:
+        year:
+          min: 2000
+          max: 2050
+  Scooter <4kW:
+    powertrain:
+      ICEV-p:
+        year:
+          min: 2000
+          max: 2050
+      BEV:
+        year:
+          min: 2015
+          max: 2050
+  Scooter 4-11kW:
+    powertrain:
+      ICEV-p:
+        year:
+          min: 2000
+          max: 2050
+      BEV:
+        year:
+          min: 2015
+          max: 2050
+  Motorcycle 4-11kW:
+    powertrain:
+      ICEV-p:
+        year:
+          min: 2000
+          max: 2050
+      BEV:
+        year:
+          min: 2015
+          max: 2050
+  Motorcycle 11-35kW:
+    powertrain:
+      ICEV-p:
+        year:
+          min: 2000
+          max: 2050
+      BEV:
+        year:
+          min: 2015
+          max: 2050
+  Motorcycle >35kW:
+    powertrain:
+      ICEV-p:
+        year:
+          min: 2000
+          max: 2050
+      BEV:
+        year:
+          min: 2015
+          max: 2050
+
+Car:
+  Micro:
+    powertrain:
+      BEV:
+        year:
+          min: 2020
+          max: 2050
+  Mini:
+    powertrain:
+      BEV:
+        year:
+          min: 2020
+          max: 2050
+      ICEV-p:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-d:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-g:
+        year:
+          min: 2000
+          max: 2050
+      HEV-p:
+        year:
+          min: 2010
+          max: 2050
+      HEV-d:
+        year:
+          min: 2010
+          max: 2050
+      PHEV-p:
+        year:
+          min: 2015
+          max: 2050
+      PHEV-d:
+        year:
+          min: 2015
+          max: 2050
+      FCEV:
+        year:
+          min: 2015
+          max: 2050
+  Small:
+    powertrain:
+      BEV:
+        year:
+          min: 2020
+          max: 2050
+      ICEV-p:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-d:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-g:
+        year:
+          min: 2000
+          max: 2050
+      HEV-p:
+        year:
+          min: 2010
+          max: 2050
+      HEV-d:
+        year:
+          min: 2010
+          max: 2050
+      PHEV-p:
+        year:
+          min: 2015
+          max: 2050
+      PHEV-d:
+        year:
+          min: 2015
+          max: 2050
+      FCEV:
+        year:
+          min: 2015
+          max: 2050
+  Lower medium:
+    powertrain:
+      BEV:
+        year:
+          min: 2020
+          max: 2050
+      ICEV-p:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-d:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-g:
+        year:
+          min: 2000
+          max: 2050
+      HEV-p:
+        year:
+          min: 2010
+          max: 2050
+      HEV-d:
+        year:
+          min: 2010
+          max: 2050
+      PHEV-p:
+        year:
+          min: 2015
+          max: 2050
+      PHEV-d:
+        year:
+          min: 2015
+          max: 2050
+      FCEV:
+        year:
+          min: 2015
+          max: 2050
+  Medium:
+    powertrain:
+      BEV:
+        year:
+          min: 2020
+          max: 2050
+      ICEV-p:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-d:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-g:
+        year:
+          min: 2000
+          max: 2050
+      HEV-p:
+        year:
+          min: 2010
+          max: 2050
+      HEV-d:
+        year:
+          min: 2010
+          max: 2050
+      PHEV-p:
+        year:
+          min: 2015
+          max: 2050
+      PHEV-d:
+        year:
+          min: 2015
+          max: 2050
+      FCEV:
+        year:
+          min: 2015
+          max: 2050
+  Medium SUV:
+    powertrain:
+      BEV:
+        year:
+          min: 2020
+          max: 2050
+      ICEV-p:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-d:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-g:
+        year:
+          min: 2000
+          max: 2050
+      HEV-p:
+        year:
+          min: 2010
+          max: 2050
+      HEV-d:
+        year:
+          min: 2010
+          max: 2050
+      PHEV-p:
+        year:
+          min: 2015
+          max: 2050
+      PHEV-d:
+        year:
+          min: 2015
+          max: 2050
+      FCEV:
+        year:
+          min: 2015
+          max: 2050
+  Large:
+    powertrain:
+      BEV:
+        year:
+          min: 2020
+          max: 2050
+      ICEV-p:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-d:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-g:
+        year:
+          min: 2000
+          max: 2050
+      HEV-p:
+        year:
+          min: 2010
+          max: 2050
+      HEV-d:
+        year:
+          min: 2010
+          max: 2050
+      PHEV-p:
+        year:
+          min: 2015
+          max: 2050
+      PHEV-d:
+        year:
+          min: 2015
+          max: 2050
+      FCEV:
+        year:
+          min: 2015
+          max: 2050
+  Large SUV:
+    powertrain:
+      BEV:
+        year:
+          min: 2020
+          max: 2050
+      ICEV-p:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-d:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-g:
+        year:
+          min: 2000
+          max: 2050
+      HEV-p:
+        year:
+          min: 2010
+          max: 2050
+      HEV-d:
+        year:
+          min: 2010
+          max: 2050
+      PHEV-p:
+        year:
+          min: 2015
+          max: 2050
+      PHEV-d:
+        year:
+          min: 2015
+          max: 2050
+      FCEV:
+        year:
+          min: 2015
+          max: 2050
+  Van:
+    powertrain:
+      BEV:
+        year:
+          min: 2020
+          max: 2050
+      ICEV-p:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-d:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-g:
+        year:
+          min: 2000
+          max: 2050
+      HEV-p:
+        year:
+          min: 2010
+          max: 2050
+      HEV-d:
+        year:
+          min: 2010
+          max: 2050
+      PHEV-p:
+        year:
+          min: 2015
+          max: 2050
+      PHEV-d:
+        year:
+          min: 2015
+          max: 2050
+      FCEV:
+        year:
+          min: 2015
+          max: 2050
+
+Bus:
+  9m:
+    powertrain:
+      BEV-depot:
+        year:
+          min: 2020
+          max: 2050
+      BEV-opp:
+        year:
+          min: 2020
+          max: 2050
+      ICEV-d:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-g:
+        year:
+          min: 2000
+          max: 2050
+      HEV-d:
+        year:
+          min: 2010
+          max: 2050
+      PHEV-d:
+        year:
+          min: 2020
+          max: 2050
+      FCEV:
+        year:
+          min: 2015
+          max: 2050
+  13m-city:
+    powertrain:
+      BEV-depot:
+        year:
+          min: 2015
+          max: 2050
+      BEV-opp:
+        year:
+          min: 2020
+          max: 2050
+      ICEV-d:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-g:
+        year:
+          min: 2000
+          max: 2050
+      HEV-d:
+        year:
+          min: 2010
+          max: 2050
+      PHEV-d:
+        year:
+          min: 2020
+          max: 2050
+      FCEV:
+        year:
+          min: 2015
+          max: 2050
+  13m-coach:
+    powertrain:
+      BEV-depot:
+        year:
+          min: 2030
+          max: 2050
+      ICEV-d:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-g:
+        year:
+          min: 2000
+          max: 2050
+      HEV-d:
+        year:
+          min: 2010
+          max: 2050
+      PHEV-d:
+        year:
+          min: 2020
+          max: 2050
+      FCEV:
+        year:
+          min: 2015
+          max: 2050
+  13m-city-double:
+    BEV-depot:
+      year:
+        min: 2015
+        max: 2050
+    BEV-opp:
+      year:
+        min: 2020
+        max: 2050
+    ICEV-d:
+      year:
+        min: 2000
+        max: 2050
+    ICEV-g:
+      year:
+        min: 2000
+        max: 2050
+    HEV-d:
+      year:
+        min: 2010
+        max: 2050
+    PHEV-d:
+      year:
+        min: 2020
+        max: 2050
+    FCEV:
+      year:
+        min: 2015
+        max: 2050
+  13m-coach-double:
+    powertrain:
+      BEV-depot:
+        year:
+          min: 2030
+          max: 2050
+      ICEV-d:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-g:
+        year:
+          min: 2000
+          max: 2050
+      HEV-d:
+        year:
+          min: 2010
+          max: 2050
+      PHEV-d:
+        year:
+          min: 2020
+          max: 2050
+      FCEV:
+        year:
+          min: 2015
+          max: 2050
+  18m:
+    BEV-depot:
+      year:
+        min: 2015
+        max: 2050
+    BEV-opp:
+      year:
+        min: 2020
+        max: 2050
+    BEV-motion:
+      year:
+        min: 2000
+        max: 2050
+    ICEV-d:
+      year:
+        min: 2000
+        max: 2050
+    ICEV-g:
+      year:
+        min: 2000
+        max: 2050
+    HEV-d:
+      year:
+        min: 2010
+        max: 2050
+    PHEV-d:
+      year:
+        min: 2020
+        max: 2050
+    FCEV:
+      year:
+        min: 2015
+        max: 2050
+
+Truck:
+  3.5t:
+    powertrain:
+      BEV-depot:
+        year:
+          min: 2020
+          max: 2050
+      ICEV-d:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-g:
+        year:
+          min: 2000
+          max: 2050
+      HEV-d:
+        year:
+          min: 2020
+          max: 2050
+      PHEV-d:
+        year:
+          min: 2020
+          max: 2050
+      FCEV:
+        year:
+          min: 2020
+          max: 2050
+  7.5t:
+    powertrain:
+      BEV-depot:
+        year:
+          min: 2020
+          max: 2050
+      ICEV-d:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-g:
+        year:
+          min: 2000
+          max: 2050
+      HEV-d:
+        year:
+          min: 2020
+          max: 2050
+      PHEV-d:
+        year:
+          min: 2020
+          max: 2050
+      FCEV:
+        year:
+          min: 2020
+          max: 2050
+  18t:
+    powertrain:
+      BEV-depot:
+        year:
+          min: 2020
+          max: 2050
+      ICEV-d:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-g:
+        year:
+          min: 2000
+          max: 2050
+      HEV-d:
+        year:
+          min: 2020
+          max: 2050
+      PHEV-d:
+        year:
+          min: 2020
+          max: 2050
+      FCEV:
+        year:
+          min: 2020
+          max: 2050
+  26t:
+    powertrain:
+      BEV-depot:
+        year:
+          min: 2020
+          max: 2050
+      ICEV-d:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-g:
+        year:
+          min: 2000
+          max: 2050
+      HEV-d:
+        year:
+          min: 2020
+          max: 2050
+      PHEV-d:
+        year:
+          min: 2020
+          max: 2050
+      FCEV:
+        year:
+          min: 2020
+          max: 2050
+  32t:
+    powertrain:
+      BEV-depot:
+        year:
+          min: 2020
+          max: 2050
+      ICEV-d:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-g:
+        year:
+          min: 2000
+          max: 2050
+      HEV-d:
+        year:
+          min: 2020
+          max: 2050
+      PHEV-d:
+        year:
+          min: 2020
+          max: 2050
+      FCEV:
+        year:
+          min: 2020
+          max: 2050
+  40t:
+    powertrain:
+      BEV-depot:
+        year:
+          min: 2020
+          max: 2050
+      ICEV-d:
+        year:
+          min: 2000
+          max: 2050
+      ICEV-g:
+        year:
+          min: 2000
+          max: 2050
+      HEV-d:
+        year:
+          min: 2020
+          max: 2050
+      PHEV-d:
+        year:
+          min: 2020
+          max: 2050
+      FCEV:
+        year:
+          min: 2020
+          max: 2050

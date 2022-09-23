@@ -1,0 +1,47 @@
+# list of all teh electricity technologies
+# that can compose an electricity mix
+# for quick GHG calculations, we also specify
+# the GHG emissions per kWh for each technology
+---
+Hydro:
+  GHG emission: 0.0
+Nuclear:
+  GHG emission: 0.0
+Gas:
+  GHG emission: 0.0
+Solar:
+  GHG emission: 0.0
+Wind:
+  GHG emission: 0.0
+Biomass:
+  GHG emission: 0.0
+Coal:
+  GHG emission: 0.0
+Oil:
+  GHG emission: 0.0
+Geothermal:
+  GHG emission: 0.0
+Waste:
+  GHG emission: 0.0
+Biogas CCS:
+  GHG emission: 0.0
+Biomass CCS:
+  GHG emission: 0.0
+Coal CCS:
+  GHG emission: 0.0
+Gas CCS:
+  GHG emission: 0.0
+Wood CCS:
+  GHG emission: 0.0
+Hydro, reservoir:
+  GHG emission: 0.0
+Gas CCGT:
+  GHG emission: 0.0
+Gas CHP:
+  GHG emission: 0.0
+Solar, thermal:
+  GHG emission: 0.0
+Wind, offshore:
+  GHG emission: 0.0
+Lignite:
+  GHG emission: 0.0
