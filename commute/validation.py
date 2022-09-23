@@ -1,9 +1,11 @@
-from . import DATA_DIR
-from schema import And, Optional, Schema, Use
-import yaml
 from typing import List, Tuple
-from country_converter import CountryConverter
+
 import numpy as np
+import yaml
+from country_converter import CountryConverter
+from schema import And, Optional, Schema, Use
+
+from . import DATA_DIR
 
 BUSES_VALIDATION_PATH = DATA_DIR / "buses_validation.yaml"
 TRUCKS_VALIDATION_PATH = DATA_DIR / "trucks_validation.yaml"
