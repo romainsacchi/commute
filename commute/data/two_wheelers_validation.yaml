@@ -1,3 +1,14 @@
+# fuel consumption in liters per 100 km,
+# except for BEVs, which are in kWh per 100 km
+#     ICEV-p: 42.6 MJ/kg, 0.75 kg/L
+#     BEV: 3.6 MJ/kWh
+# lifetime, in km
+# annual mileage, in km
+# payload, in km
+# battery capacity, in kWh
+# power, in kW
+# curb mass, in kg
+
 Two wheeler:
   energy consumption:
     Human:

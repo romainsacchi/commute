@@ -3,10 +3,14 @@
 #     ICEV-d: 43 MJ/kg, 0.83 kg/L
 #     ICEV-g: 47.5 MJ/kg, 0.639 kg/L
 #     HEV-d: 43 MJ/kg, 0.83 kg/L
-#     ICEV-p: 42.6 MJ/kg, 0.75 kg/L
-#     HEV-p: 42.6 MJ/kg, 0.75 kg/L
 #     BEV: 3.6 MJ/kWh
 #     FCEV: 120 MJ/kg, 0.042 kg/L
+# lifetime, in km
+# annual mileage, in km
+# payload, in km
+# battery capacity, in kWh
+# power, in kW
+# curb mass, in kg
 ---
 
 Bus:
