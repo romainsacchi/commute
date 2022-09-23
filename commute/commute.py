@@ -1,23 +1,26 @@
-from . import DATA_DIR
-from schema import And, Optional, Schema, Use
-import yaml
-from typing import List, Tuple
-from country_converter import CountryConverter
-import numpy as np
 from datetime import date
+from typing import List, Tuple
 
+import numpy as np
+import yaml
+from country_converter import CountryConverter
+from schema import And, Optional, Schema, Use
+
+from . import DATA_DIR
 from .validation import (
-    check_vehicle_availability,
-    check_fuel_blend,
-    check_electricity_mix,
-    check_driving_cycle,
-    check_value,
-    get_average_value,
-    check_energy_storage,
     check_curb_mass,
+    check_driving_cycle,
+    check_electricity_mix,
+    check_energy_storage,
+    check_fuel_blend,
     check_power,
-    check_schema
+    check_schema,
+    check_value,
+    check_vehicle_availability,
+    get_average_value,
 )
+
+
 def validate_commute_request(commute_request: list) -> None:
     """
     Validate a commute request.
