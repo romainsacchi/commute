@@ -10,7 +10,29 @@
 # curb mass, in kg
 
 Two wheeler:
-  energy consumption:
+  fuel consumption:
+    ICEV-p:
+      Scooter <4kW:
+        min: 3
+        max: 6
+        average: 4.3
+      Scooter 4-11kW:
+        min: 2
+        max: 6
+        average: 3.3
+      Motorcycle 4-11kW:
+        min: 2
+        max: 6
+        average: 3.2
+      Motorcycle 11-35kW:
+        min: 2
+        max: 6
+        average: 4.6
+      Motorcycle >35kW:
+        min: 3
+        max: 9
+        average: 6.1
+  electricity consumption:
     Human:
       Bicycle <25:
         min: 0
@@ -53,27 +75,6 @@ Two wheeler:
         min: 5
         max: 12
         average: 7.6
-    ICEV-p:
-      Scooter <4kW:
-        min: 3
-        max: 6
-        average: 4.3
-      Scooter 4-11kW:
-        min: 2
-        max: 6
-        average: 3.3
-      Motorcycle 4-11kW:
-        min: 2
-        max: 6
-        average: 3.2
-      Motorcycle 11-35kW:
-        min: 2
-        max: 6
-        average: 4.6
-      Motorcycle >35kW:
-        min: 3
-        max: 9
-        average: 6.1
   lifetime:
     Kick-scooter:
       min: 500

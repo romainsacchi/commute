@@ -14,7 +14,7 @@
 ---
 
 Bus:
-  energy consumption:
+  fuel consumption:
     ICEV-d:
       9m:
         min: 15
@@ -90,6 +90,32 @@ Bus:
         min: 35
         max: 60
         average: 44.2
+    FCEV:
+      9m:
+        min: 100
+        max: 150
+        average: 130
+      13m-city:
+        min: 180
+        max: 240
+        average: 207.85
+      13m-coach:
+        min: 80
+        max: 150
+        average: 125.48
+      13m-city-double:
+        min: 250
+        max: 300
+        average: 274.76
+      13m-coach-double:
+        min: 130
+        max: 190
+        average: 161.9
+      18m:
+        min: 250
+        max: 300
+        average: 272.14
+  electricity consumption:
     BEV-depot:
       9m:
         min: 80
@@ -145,31 +171,6 @@ Bus:
         min: 180
         max: 250
         average: 203
-    FCEV:
-      9m:
-        min: 100
-        max: 150
-        average: 130
-      13m-city:
-        min: 180
-        max: 240
-        average: 207.85
-      13m-coach:
-        min: 80
-        max: 150
-        average: 125.48
-      13m-city-double:
-        min: 250
-        max: 300
-        average: 274.76
-      13m-coach-double:
-        min: 130
-        max: 190
-        average: 161.9
-      18m:
-        min: 250
-        max: 300
-        average: 272.14
   lifetime:
     9m:
       min: 400000

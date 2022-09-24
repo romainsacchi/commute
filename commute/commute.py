@@ -4,78 +4,72 @@ from .validation import (
     check_schema,
     check_value,
     check_vehicle_availability,
+    check_country,
+    check_battery_type,
 )
 
 
 def validate_commute_request(commute_request: list) -> None:
     """
     Validate a commute request.
+    A commute request is a list of trip legs.
     """
 
-    for commute in commute_request:
-        check_schema(commute)
-        vehicle = commute["vehicle"]
-        size = commute["size"]
-        powertrain = commute["powertrain"]
-        year = commute.get("year", date.today().year)
-        driving_cycle = commute.get("driving_cycle")
+    for leg in commute_request:
+        vehicle = leg["vehicle"]
+        size = leg["size"]
+        powertrain = leg["powertrain"]
+        year = leg.get("year", date.today().year)
 
-        check_vehicle_availability(vehicle, size, powertrain, year)
+        check_vehicle_availability(vehicle, powertrain, size, year)
+        driving_cycle = check_driving_cycle(vehicle, leg.get("driving cycle"))
 
-        if "driving cycle" in commute:
-            check_driving_cycle(vehicle, commute["driving cycle"])
+        leg["distance"] = leg.get("distance", 1.0)
+        leg["return trip"] = leg.get("return trip", False)
+        leg["location"] = check_country(leg.get("location", "CH"))
+        leg["battery type"] = check_battery_type(
+            vehicle, powertrain, leg.get("battery type")
+        )
 
-        if "fuel consumption" in commute:
-            check_value(
+        check_schema(leg)
+
+        for var in [
+            "fuel consumption",
+            "electricity consumption",
+            "number of passengers",
+            "payload",
+            "battery capacity",
+            "curb mass",
+            "power",
+            "electric utility factor",
+            "lifetime",
+            "annual mileage",
+        ]:
+
+            fetch_value = (
+                True
+                if var in ["number of passengers", "lifetime", "annual mileage"]
+                else False
+            )
+
+            leg[var] = check_value(
                 vehicle,
                 size,
                 powertrain,
                 year,
                 driving_cycle,
-                "fuel consumption",
-                commute["fuel consumption"],
+                var,
+                leg.get(var),
+                fetch_value,
             )
 
-        if "number of passengers" in commute:
-            check_value(
-                vehicle,
-                size,
-                powertrain,
-                year,
-                driving_cycle,
-                "number of passengers",
-                commute["number of passengers"],
-            )
 
-        if "energy storage" in commute:
-            check_value(
-                vehicle,
-                size,
-                powertrain,
-                year,
-                driving_cycle,
-                "energy storage",
-                commute["energy storage"],
-            )
+def process_commute_requests(commute_requests: list) -> list:
+    """
+    Process a list of commute requests.
+    """
 
-        if "curb mass" in commute:
-            check_value(
-                vehicle,
-                size,
-                powertrain,
-                year,
-                driving_cycle,
-                "curb mass",
-                commute["curb mass"],
-            )
+    for commute_request in commute_requests:
+        validate_commute_request(commute_request)
 
-        if "power" in commute:
-            check_value(
-                vehicle,
-                size,
-                powertrain,
-                year,
-                driving_cycle,
-                "power",
-                commute["power"],
-            )
+    return commute_requests

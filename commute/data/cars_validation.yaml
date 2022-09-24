@@ -21,7 +21,7 @@ Car:
     - WLTC 3.2
     - WLTC 3.3
     - WLTC 3.4
-  energy consumption:
+  fuel consumption:
     ICEV-p:
       Mini:
         min: 3
@@ -220,43 +220,176 @@ Car:
         min: 35
         max: 45
         average: 34.76
+    PHEV-p:
+      Mini:
+        min: 0
+        max: 6
+        average: 3.2
+      Small:
+        min: 0
+        max: 7
+        average: 4
+      Lower medium:
+        min: 0
+        max: 8
+        average: 4.4
+      Medium:
+        min: 0
+        max: 9.5
+        average: 5
+      Medium SUV:
+        min: 0
+        max: 9.5
+        average: 4.3
+      Large:
+        min: 0
+        max: 10.5
+        average: 4.8
+      Large SUV:
+        min: 0
+        max: 11.5
+        average: 5.9
+      Van:
+        min: 0
+        max: 10.5
+        average: 5.3
+    PHEV-d:
+      Mini:
+        min: 0
+        max: 5
+        average: 2.6
+      Small:
+        min: 0
+        max: 6
+        average: 3.2
+      Lower medium:
+        min: 0
+        max: 7
+        average: 3.5
+      Medium:
+        min: 0
+        max: 8
+        average: 4
+      Medium SUV:
+        min: 0
+        max: 8
+        average: 3.5
+      Large:
+        min: 0
+        max: 8.5
+        average: 3.8
+      Large SUV:
+        min: 0
+        max: 9.5
+        average: 4.8
+      Van:
+        min: 0
+        max: 8.5
+        average: 4.3
+  electricity consumption:
     BEV:
       Micro:
         min: 8
         max: 14
         average: 10.4
       Mini:
-        min: 9
-        max: 15
-        average: 12
-      Small:
-        min: 10
+        min: 12
         max: 18
-        average: 14
+        average: 14.7
+      Small:
+        min: 13
+        max: 19
+        average: 16.4
       Lower medium:
-        min: 12
+        min: 15
         max: 20
-        average: 16
+        average: 18.2
       Medium:
-        min: 12
-        max: 22
-        average: 18
-      Medium SUV:
-        min: 12
+        min: 15
         max: 24
-        average: 19
+        average: 19.5
+      Medium SUV:
+        min: 18
+        max: 26
+        average: 22.4
       Large:
         min: 14
         max: 25
-        average: 20
+        average: 20.9
       Large SUV:
         min: 14
-        max: 26
+        max: 27
         average: 24
       Van:
-        min: 14
-        max: 26
-        average: 22
+        min: 20
+        max: 30
+        average: 27
+    PHEV-p:
+      Mini:
+        min: 0
+        max: 13
+        average: 6.9
+      Small:
+        min: 0
+        max: 14
+        average: 7.05
+      Lower medium:
+        min: 0
+        max: 14.5
+        average: 8.1
+      Medium:
+        min: 0
+        max: 16
+        average: 9.3
+      Medium SUV:
+        min: 0
+        max: 18.5
+        average: 11.8
+      Large:
+        min: 0
+        max: 18.5
+        average: 11.8
+      Large SUV:
+        min: 0
+        max: 21
+        average: 12.5
+      Van:
+        min: 0
+        max: 22.5
+        average: 12.8
+    PHEV-d:
+      Mini:
+        min: 0
+        max: 13.5
+        average: 6.9
+      Small:
+        min: 0
+        max: 14
+        average: 7.05
+      Lower medium:
+        min: 0
+        max: 15
+        average: 8.1
+      Medium:
+        min: 0
+        max: 16
+        average: 9.3
+      Medium SUV:
+        min: 0
+        max: 18.5
+        average: 11.8
+      Large:
+        min: 0
+        max: 18.5
+        average: 11.8
+      Large SUV:
+        min: 0
+        max: 21
+        average: 12.5
+      Van:
+        min: 0
+        max: 22.5
+        average: 11.8
   lifetime:
     Micro:
       min: 30000
