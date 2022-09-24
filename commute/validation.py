@@ -154,7 +154,10 @@ def check_battery_type(vehicle_type: str, powertrain: str, battery_type: str) ->
     """
 
     if battery_type:
-        battery_types = get_vehicle_specs(vehicle_type)[vehicle_type]["battery type"][powertrain]
+        try:
+            battery_types = get_vehicle_specs(vehicle_type)[vehicle_type]["battery type"][powertrain]
+        except KeyError:
+            raise KeyError(f"Powertrain {powertrain} does not have a battery.")
 
         assert (
             battery_type in battery_types
@@ -206,16 +209,7 @@ def get_vehicle_specs(vehicle_type: str) -> Dict[str, Any]:
 
     return get_data(d_specs[vehicle_type])
 
-def check_value(
-    vehicle,
-    size,
-    powertrain,
-    year,
-    driving_cycle,
-    variable,
-    value,
-    fetch_value=False
-) -> float:
+def check_value(vehicle, size, powertrain, driving_cycle, variable, value, fetch_value=False) -> float:
     """
     Check if the value is valid, given a variable.
     """

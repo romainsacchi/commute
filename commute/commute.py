@@ -1,4 +1,6 @@
 from datetime import date
+from collections import defaultdict
+from multiprocessing import Process, Manager
 
 from .validation import (
     check_driving_cycle,
@@ -7,6 +9,13 @@ from .validation import (
     check_vehicle_availability,
     check_country,
     check_battery_type,
+)
+
+from .calculation import (
+    car_model,
+    two_wheeler_model,
+    truck_model,
+    bus_model,
 )
 
 
@@ -25,6 +34,7 @@ def validate_commute_request(commute_request: list) -> None:
         check_vehicle_availability(vehicle, powertrain, size, year)
         driving_cycle = check_driving_cycle(vehicle, leg.get("driving cycle"))
 
+        leg["year"] = leg.get("year", date.today().year)
         leg["distance"] = leg.get("distance", 1.0)
         leg["return trip"] = leg.get("return trip", False)
         leg["location"] = check_country(leg.get("location", "CH"))
@@ -54,14 +64,7 @@ def validate_commute_request(commute_request: list) -> None:
             )
 
             leg[var] = check_value(
-                vehicle,
-                size,
-                powertrain,
-                year,
-                driving_cycle,
-                var,
-                leg.get(var),
-                fetch_value,
+                vehicle, size, powertrain, driving_cycle, var, leg.get(var), fetch_value
             )
 
 
@@ -73,4 +76,41 @@ def process_commute_requests(commute_requests: list) -> list:
     for commute_request in commute_requests:
         validate_commute_request(commute_request)
 
+    commute_requests = dispatch(commute_requests)
+
     return commute_requests
+
+def dispatch(commute_requests: list) -> dict:
+    """
+    Dispatch a list of commute requests.
+    """
+
+    d_model = {
+        "Car": car_model,
+        "Two wheeler": two_wheeler_model,
+        "Truck": truck_model,
+        "Bus": bus_model,
+    }
+
+    jobs = []
+    manager = Manager()
+    return_dict = manager.list()
+
+
+    for commute_request in commute_requests:
+        for leg in commute_request:
+            process = Process(
+                target=d_model[leg["vehicle"]],
+                args=(leg, return_dict),
+            )
+            jobs.append(process)
+
+    # Start the processes
+    for j in jobs:
+        j.start()
+
+    # Ensure all processes have finished
+    for j in jobs:
+        j.join()
+
+    return return_dict

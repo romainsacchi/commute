@@ -41,3 +41,8 @@ biomethane:
     density: 0.639
     CO2 emission factor: 2.68
     biogenic_share: 0.0
+electricity:
+    lower heating value: 3.6
+    density: 1.0
+    CO2 emission factor: 0.0
+    biogenic_share: 0.0
