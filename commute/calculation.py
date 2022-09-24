@@ -1,21 +1,13 @@
 from collections import defaultdict
-from .validation import FUELS
 
-from carculator import (
-    CarInputParameters,
-    CarModel,
-)
+from carculator import CarInputParameters, CarModel
 from carculator import fill_xarray_from_input_parameters as fill_car_data
-from carculator_truck import (
-    TruckInputParameters,
-    TruckModel,
-)
-from carculator_truck import fill_xarray_from_input_parameters as fill_truck_data
-from carculator_bus import (
-    BusInputParameters,
-    BusModel,
-)
+from carculator_bus import BusInputParameters, BusModel
 from carculator_bus import fill_xarray_from_input_parameters as fill_bus_data
+from carculator_truck import TruckInputParameters, TruckModel
+from carculator_truck import fill_xarray_from_input_parameters as fill_truck_data
+
+from .validation import FUELS
 
 
 def generic_fuel_name(powertrain):
@@ -45,17 +37,21 @@ def fetch_energy_consumption(arr, leg):
 
     if leg["powertrain"] not in ["PHEV-d", "PHEV-p"]:
         energy_use = (
-            arr.sel(
-                powertrain=leg["powertrain"],
-                size=leg["size"],
-                year=leg["year"],
-                parameter="TtW energy",
-                value=0,
+            (
+                arr.sel(
+                    powertrain=leg["powertrain"],
+                    size=leg["size"],
+                    year=leg["year"],
+                    parameter="TtW energy",
+                    value=0,
+                )
+                / fuel_lhv
+                / fuel_density
+                * 100
             )
-            / fuel_lhv
-            / fuel_density
-            * 100
-        ).round(2).values.item(0)
+            .round(2)
+            .values.item(0)
+        )
 
         if leg["powertrain"] in ["BEV", "BEV-depot", "BEV-opp", "BEV-motion"]:
             leg["electricity consumption"] = energy_use
@@ -64,44 +60,52 @@ def fetch_energy_consumption(arr, leg):
     else:
 
         electricity_use = (
-            arr.sel(
-                powertrain=leg["powertrain"],
-                size=leg["size"],
-                year=leg["year"],
-                parameter="TtW energy, electric mode",
-                value=0,
+            (
+                arr.sel(
+                    powertrain=leg["powertrain"],
+                    size=leg["size"],
+                    year=leg["year"],
+                    parameter="TtW energy, electric mode",
+                    value=0,
+                )
+                * arr.sel(
+                    powertrain=leg["powertrain"],
+                    size=leg["size"],
+                    year=leg["year"],
+                    parameter="electric utility factor",
+                    value=0,
+                )
+                / 3600
+                / 1
+                * 100
             )
-            * arr.sel(
-                powertrain=leg["powertrain"],
-                size=leg["size"],
-                year=leg["year"],
-                parameter="electric utility factor",
-                value=0,
-            )
-            / 3600
-            / 1
-            * 100
-        ).round(2).values.item(0)
+            .round(2)
+            .values.item(0)
+        )
 
         fuel_use = (
-            arr.sel(
-                powertrain=leg["powertrain"],
-                size=leg["size"],
-                year=leg["year"],
-                parameter="TtW energy, combustion mode",
-                value=0,
+            (
+                arr.sel(
+                    powertrain=leg["powertrain"],
+                    size=leg["size"],
+                    year=leg["year"],
+                    parameter="TtW energy, combustion mode",
+                    value=0,
+                )
+                * arr.sel(
+                    powertrain=leg["powertrain"],
+                    size=leg["size"],
+                    year=leg["year"],
+                    parameter="electric utility factor",
+                    value=0,
+                )
+                / fuel_lhv
+                / fuel_density
+                * 100
             )
-            * arr.sel(
-                powertrain=leg["powertrain"],
-                size=leg["size"],
-                year=leg["year"],
-                parameter="electric utility factor",
-                value=0,
-            )
-            / fuel_lhv
-            / fuel_density
-            * 100
-        ).round(2).values.item(0)
+            .round(2)
+            .values.item(0)
+        )
 
         leg["electricity consumption"] = electricity_use
         leg["fuel consumption"] = fuel_use

@@ -1,7 +1,8 @@
-from datetime import date
 from collections import defaultdict
-from multiprocessing import Process, Manager
+from datetime import date
+from multiprocessing import Manager, Process
 
+from .calculation import bus_model, car_model, truck_model, two_wheeler_model
 from .validation import (
     check_battery_type,
     check_country,
@@ -9,13 +10,6 @@ from .validation import (
     check_schema,
     check_value,
     check_vehicle_availability,
-)
-
-from .calculation import (
-    car_model,
-    two_wheeler_model,
-    truck_model,
-    bus_model,
 )
 
 
@@ -80,6 +74,7 @@ def process_commute_requests(commute_requests: list) -> list:
 
     return commute_requests
 
+
 def dispatch(commute_requests: list) -> dict:
     """
     Dispatch a list of commute requests.
@@ -95,7 +90,6 @@ def dispatch(commute_requests: list) -> dict:
     jobs = []
     manager = Manager()
     return_dict = manager.list()
-
 
     for commute_request in commute_requests:
         for leg in commute_request:
