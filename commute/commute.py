@@ -3,12 +3,12 @@ from collections import defaultdict
 from multiprocessing import Process, Manager
 
 from .validation import (
+    check_battery_type,
+    check_country,
     check_driving_cycle,
     check_schema,
     check_value,
     check_vehicle_availability,
-    check_country,
-    check_battery_type,
 )
 
 from .calculation import (
