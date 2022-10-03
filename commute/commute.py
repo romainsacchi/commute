@@ -1,6 +1,7 @@
 from datetime import date
-from multiprocessing import Process, Manager
+from multiprocessing import Manager, Process
 
+from .calculation import bus_model, car_model, truck_model, two_wheeler_model
 from .validation import (
     check_battery_type,
     check_country,
@@ -8,13 +9,6 @@ from .validation import (
     check_schema,
     check_value,
     check_vehicle_availability,
-)
-
-from .calculation import (
-    car_model,
-    two_wheeler_model,
-    truck_model,
-    bus_model,
 )
 
 
@@ -65,13 +59,7 @@ def validate_commute_request(commute_request: list) -> None:
             )
 
             leg[var] = check_value(
-                vehicle,
-                size,
-                powertrain,
-                driving_cycle,
-                var,
-                leg.get(var),
-                fetch_value
+                vehicle, size, powertrain, driving_cycle, var, leg.get(var), fetch_value
             )
 
 
@@ -93,6 +81,7 @@ def process_commute_requests(commute_requests: list) -> dict:
 
     return commute_requests
 
+
 def update_return_dict(commute_requests: dict, return_dict: list) -> dict:
     for _, commute in commute_requests.items():
         for leg in commute:
@@ -103,6 +92,7 @@ def update_return_dict(commute_requests: dict, return_dict: list) -> dict:
                 ):
                     leg.update(result)
     return commute_requests
+
 
 def dispatch(commute_requests: dict) -> dict:
     """
@@ -135,6 +125,5 @@ def dispatch(commute_requests: dict) -> dict:
     # Ensure all processes have finished
     for j in jobs:
         j.join()
-
 
     return update_return_dict(commute_requests, return_dict)

@@ -1,5 +1,6 @@
-from commute import process_commute_requests
 import pytest
+
+from commute import process_commute_requests
 
 requests = [
     [
@@ -23,21 +24,25 @@ requests = [
             "powertrain": "ICEV-d",
             "driving cycle": "WLTC",
         },
-    ]
+    ],
 ]
 
 result = process_commute_requests(requests)
+
 
 def test_location():
     assert result is not None
     assert result[0][0]["location"] == "CH"
 
+
 def test_driving_cycle():
     assert result[0][0]["driving cycle"] == "WLTC"
     assert result[0][1]["driving cycle"] is None
 
+
 def test_battery_type():
     assert result[0][0]["battery type"] == "NMC-622"
+
 
 def test_requests_ids():
     assert result[0][0]["commute id"] == 0

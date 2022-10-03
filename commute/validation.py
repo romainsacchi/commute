@@ -1,9 +1,9 @@
-from typing import List, Tuple, Dict, Any
+from typing import Any, Dict, List, Tuple
 
 import numpy as np
 import yaml
 from country_converter import CountryConverter
-from schema import And, Optional, Schema, Use, Or
+from schema import And, Optional, Or, Schema, Use
 
 from . import DATA_DIR
 
@@ -28,6 +28,7 @@ def get_data(filepath) -> dict:
         except yaml.YAMLError as exc:
             print(exc)
     return data
+
 
 VEHICLE_ARCHETYPES = get_data(VEHICLE_ARCHETYPES_PATH)
 FUELS = get_data(FUELS_SPECS_PATH)
@@ -148,18 +149,24 @@ def get_list_powertrains() -> List[str]:
                 list_powertrains.append(powertrain)
     return list(set(list_powertrains))
 
+
 LIST_VEHICLES = get_list_vehicles()
 LIST_SIZES = get_list_sizes()
 LIST_POWERTRAINS = get_list_powertrains()
 
-def check_battery_type(vehicle_type: str, powertrain: str, battery_type: str) -> [str, None]:
+
+def check_battery_type(
+    vehicle_type: str, powertrain: str, battery_type: str
+) -> [str, None]:
     """
     Check whether the battery type is available for a given vehicle type.
     """
 
     if battery_type:
         try:
-            battery_types = get_vehicle_specs(vehicle_type)[vehicle_type]["battery type"][powertrain]
+            battery_types = get_vehicle_specs(vehicle_type)[vehicle_type][
+                "battery type"
+            ][powertrain]
         except KeyError:
             raise KeyError(f"Powertrain {powertrain} does not have a battery.")
 
@@ -177,6 +184,7 @@ def check_battery_type(vehicle_type: str, powertrain: str, battery_type: str) ->
                 battery_type = "NMC-622"
 
     return battery_type
+
 
 def check_fuel_blend(blend) -> None:
     """
@@ -207,6 +215,7 @@ def check_electricity_mix(mix) -> None:
         (f in ELECTRICITY for f in mix)
     ), "Electricity mix contains unknown technology."
 
+
 def get_vehicle_specs(vehicle_type: str) -> Dict[str, Any]:
     """
     Return the specifications of a vehicle type.
@@ -220,7 +229,10 @@ def get_vehicle_specs(vehicle_type: str) -> Dict[str, Any]:
 
     return get_data(d_specs[vehicle_type])
 
-def check_value(vehicle, size, powertrain, driving_cycle, variable, value, fetch_value=False) -> float:
+
+def check_value(
+    vehicle, size, powertrain, driving_cycle, variable, value, fetch_value=False
+) -> float:
     """
     Check if the value is valid, given a variable.
     """
@@ -254,7 +266,9 @@ def check_value(vehicle, size, powertrain, driving_cycle, variable, value, fetch
         return value
 
     if value:
-        assert min_value <= value <= max_value, f"{variable} {value} outside of bounds: {min_value}-{max_value}."
+        assert (
+            min_value <= value <= max_value
+        ), f"{variable} {value} outside of bounds: {min_value}-{max_value}."
         return value
 
     if fetch_value:
@@ -313,7 +327,6 @@ def check_schema(commute_request: dict) -> None:
     """
 
     request_schema = Schema(
-
         {
             "vehicle": And(str, lambda s: s in LIST_VEHICLES),
             "size": And(str, lambda s: s in LIST_SIZES),
@@ -328,31 +341,40 @@ def check_schema(commute_request: dict) -> None:
                 dict,
                 lambda s: check_fuel_blend(s),
             ),
-            Optional("electricity mix"): And(
-                list, lambda s: check_electricity_mix(s)
-            ),
+            Optional("electricity mix"): And(list, lambda s: check_electricity_mix(s)),
             Optional("driving cycle"): Or(str, None),
             Optional("fuel consumption"): And(Use(float), lambda n: 0 <= n <= 200),
-            Optional("electricity consumption"): And(Use(float), lambda n: 0 <= n <= 500),
-            Optional("number of passengers"): And(
-                int, lambda n: 0 <= n <= 200
+            Optional("electricity consumption"): And(
+                Use(float), lambda n: 0 <= n <= 500
             ),
+            Optional("number of passengers"): And(int, lambda n: 0 <= n <= 200),
             Optional("battery type"): Or(str, None),
-            Optional("battery capacity"): Or(And(Use(float), lambda n: 0 <= n <= 1000), None),
-            Optional("battery mass"): Or(And(Use(float), lambda n: 0 <= n <= 10000), None),
-            Optional("energy storage replacement"): Or(And(Use(int), lambda n: 0 <= n <= 2), None),
+            Optional("battery capacity"): Or(
+                And(Use(float), lambda n: 0 <= n <= 1000), None
+            ),
+            Optional("battery mass"): Or(
+                And(Use(float), lambda n: 0 <= n <= 10000), None
+            ),
+            Optional("energy storage replacement"): Or(
+                And(Use(int), lambda n: 0 <= n <= 2), None
+            ),
             Optional("curb mass"): Or(And(Use(float), lambda n: 0 <= n <= 50000), None),
             Optional("payload"): Or(And(Use(float), lambda n: 0 <= n <= 28000), None),
-            Optional("electric power"): Or(And(Use(float), lambda n: 0 <= n <= 1000), None),
-            Optional("combustion power"): Or(And(Use(float), lambda n: 0 <= n <= 1000), None),
-            Optional("electric utility factor"): Or(And(
-                float, lambda n: 0 <= n <= 1
-            ), None),
+            Optional("electric power"): Or(
+                And(Use(float), lambda n: 0 <= n <= 1000), None
+            ),
+            Optional("combustion power"): Or(
+                And(Use(float), lambda n: 0 <= n <= 1000), None
+            ),
+            Optional("electric utility factor"): Or(
+                And(float, lambda n: 0 <= n <= 1), None
+            ),
             Optional("lifetime"): Or(And(Use(int), lambda n: 0 <= n <= 1500000), None),
-            Optional("annual mileage"): Or(And(Use(int), lambda n: 0 <= n <= 150000), None),
+            Optional("annual mileage"): Or(
+                And(Use(int), lambda n: 0 <= n <= 150000), None
+            ),
             Optional("target range"): Or(And(Use(int), lambda n: 0 <= n <= 1500), None),
         }
-
     )
 
     request_schema.validate(commute_request)
