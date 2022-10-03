@@ -1,24 +1,15 @@
 from collections import defaultdict
+
 import xarray as xr
-from .validation import FUELS, get_data
-from . import DATA_DIR
-
-from carculator import (
-    CarInputParameters,
-    CarModel,
-)
+from carculator import CarInputParameters, CarModel
 from carculator import fill_xarray_from_input_parameters as fill_car_data
-from carculator_truck import (
-    TruckInputParameters,
-    TruckModel,
-)
-from carculator_truck import fill_xarray_from_input_parameters as fill_truck_data
-from carculator_bus import (
-    BusInputParameters,
-    BusModel,
-)
+from carculator_bus import BusInputParameters, BusModel
 from carculator_bus import fill_xarray_from_input_parameters as fill_bus_data
+from carculator_truck import TruckInputParameters, TruckModel
+from carculator_truck import fill_xarray_from_input_parameters as fill_truck_data
 
+from . import DATA_DIR
+from .validation import FUELS, get_data
 
 VARIABLES_MAPPING_PATH = DATA_DIR / "variables_mapping.yaml"
 VARIABLES_MAP = get_data(VARIABLES_MAPPING_PATH)
@@ -427,24 +418,14 @@ def set_battery_type(leg: dict) -> dict:
     """
 
     energy_storage = {
-        "electric": {
-            (
-                leg["powertrain"],
-                 leg["size"],
-                 leg["year"]
-             ): leg["battery type"]
-        }
+        "electric": {(leg["powertrain"], leg["size"], leg["year"]): leg["battery type"]}
     }
 
     if "battery capacity" in leg:
         energy_storage.update(
             {
                 "capacity": {
-                    (
-                        leg["powertrain"],
-                        leg["size"],
-                        leg["year"]
-                    ): leg[
+                    (leg["powertrain"], leg["size"], leg["year"]): leg[
                         "battery capacity"
                     ]
                 }
@@ -502,13 +483,7 @@ def set_target_range(leg):
         return leg["target range"]
     elif leg["vehicle"] == "Car" and leg.get("target range"):
         if leg["powertrain"] in ["BEV"]:
-            return {
-                (
-                    leg["powertrain"],
-                    leg["size"],
-                    leg["year"]
-                ): leg["target range"]
-            }
+            return {(leg["powertrain"], leg["size"], leg["year"]): leg["target range"]}
 
 
 def car_model(leg, return_list):

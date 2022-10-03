@@ -1,5 +1,6 @@
-from commute import process_commute_requests
 import pytest
+
+from commute import process_commute_requests
 
 
 def test_mandatory_specs():
@@ -16,6 +17,7 @@ def test_mandatory_specs():
         process_commute_requests(requests)
     assert wrapped_error.type == KeyError
 
+
 def test_vehicle_type():
 
     requests = [
@@ -31,6 +33,7 @@ def test_vehicle_type():
     with pytest.raises(AssertionError) as wrapped_error:
         process_commute_requests(requests)
     assert wrapped_error.type == AssertionError
+
 
 def test_vehicle_size():
 
@@ -55,16 +58,16 @@ def test_vehicle_size():
 
 def test_vehicle_powertrain():
 
-        requests = [
-            [
-                {
-                    "vehicle": "Car",
-                    "size": "Large",
-                    "powertrain": "ICEV",
-                },
-            ],
-        ]
+    requests = [
+        [
+            {
+                "vehicle": "Car",
+                "size": "Large",
+                "powertrain": "ICEV",
+            },
+        ],
+    ]
 
-        with pytest.raises(AssertionError) as wrapped_error:
-            process_commute_requests(requests)
-        assert wrapped_error.type == AssertionError
+    with pytest.raises(AssertionError) as wrapped_error:
+        process_commute_requests(requests)
+    assert wrapped_error.type == AssertionError
