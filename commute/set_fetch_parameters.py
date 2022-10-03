@@ -365,9 +365,6 @@ def fetch_vehicle_specs(arr: xr.DataArray, leg: dict) -> dict:
     return leg
 
 
-
-
-
 def adjust_input_parameters(arr: xr.DataArray, leg: dict) -> xr.DataArray:
     """
     Adjusts the input parameters for a given leg vehicle.
