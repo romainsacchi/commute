@@ -1,18 +1,9 @@
-from carculator import (
-    CarInputParameters,
-    CarModel,
-)
+from carculator import CarInputParameters, CarModel
 from carculator import fill_xarray_from_input_parameters as fill_car_data
-from carculator_truck import (
-    TruckInputParameters,
-    TruckModel,
-)
-from carculator_truck import fill_xarray_from_input_parameters as fill_truck_data
-from carculator_bus import (
-    BusInputParameters,
-    BusModel,
-)
+from carculator_bus import BusInputParameters, BusModel
 from carculator_bus import fill_xarray_from_input_parameters as fill_bus_data
+from carculator_truck import TruckInputParameters, TruckModel
+from carculator_truck import fill_xarray_from_input_parameters as fill_truck_data
 
 from .set_fetch_parameters import (
     adjust_input_parameters,
