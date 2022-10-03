@@ -1,11 +1,13 @@
-from commute.set_fetch_parameters import (
-    generic_fuel_name,
-    fetch_energy_consumption,
-    adjust_input_parameters
-)
+import numpy as np
 import pytest
 import xarray as xr
-import numpy as np
+
+from commute.set_fetch_parameters import (
+    adjust_input_parameters,
+    fetch_energy_consumption,
+    generic_fuel_name,
+)
+
 
 def test_generic_fuel_name():
     assert generic_fuel_name("ICEV-d") == "diesel"
@@ -21,6 +23,7 @@ def test_generic_fuel_name():
         generic_fuel_name("foo")
     assert wrapped_error.type == ValueError
 
+
 def test_fetch_energy_consumption():
 
     # test diesel
@@ -31,7 +34,7 @@ def test_fetch_energy_consumption():
             "size": ["Large"],
             "year": [2020],
             "parameter": ["TtW energy"],
-            "value": [0]
+            "value": [0],
         },
         dims=["powertrain", "size", "year", "parameter", "value"],
     )
@@ -54,7 +57,7 @@ def test_fetch_energy_consumption():
             "size": ["Large"],
             "year": [2020],
             "parameter": ["TtW energy"],
-            "value": [0]
+            "value": [0],
         },
         dims=["powertrain", "size", "year", "parameter", "value"],
     )
@@ -79,9 +82,9 @@ def test_fetch_energy_consumption():
             "parameter": [
                 "TtW energy, electric mode",
                 "TtW energy, combustion mode",
-                "electric utility factor"
+                "electric utility factor",
             ],
-            "value": [0]
+            "value": [0],
         },
         dims=["powertrain", "size", "year", "parameter", "value"],
     )
@@ -93,9 +96,12 @@ def test_fetch_energy_consumption():
 
     returned_leg = fetch_energy_consumption(arr, leg)
 
-    assert "fuel consumption" in returned_leg and "electricity consumption" in returned_leg
+    assert (
+        "fuel consumption" in returned_leg and "electricity consumption" in returned_leg
+    )
     assert returned_leg["electricity consumption"] == round(1200 / 3600 * 100 * 0.5, 2)
     assert returned_leg["fuel consumption"] == round(1800 / 43000 / 0.83 * 100 * 0.5, 2)
+
 
 def test_adjust_input_parameters():
     arr = xr.DataArray(
@@ -105,7 +111,7 @@ def test_adjust_input_parameters():
             "size": ["Large"],
             "year": [2020],
             "parameter": ["TtW energy", "lifetimes", "kilometers per year"],
-            "value": [0]
+            "value": [0],
         },
         dims=["powertrain", "size", "year", "parameter", "value"],
     )

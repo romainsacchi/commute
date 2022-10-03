@@ -1,10 +1,11 @@
-
 import xarray as xr
-from .validation import FUELS, get_data
+
 from . import DATA_DIR
+from .validation import FUELS, get_data
 
 VARIABLES_MAPPING_PATH = DATA_DIR / "variables_mapping.yaml"
 VARIABLES_MAP = get_data(VARIABLES_MAPPING_PATH)
+
 
 def generic_fuel_name(powertrain: str) -> str:
     """
@@ -48,16 +49,16 @@ def fetch_energy_consumption(arr: xr.DataArray, leg: dict) -> dict:
     if leg["powertrain"] not in ["PHEV-d", "PHEV-p"]:
         energy_use = (
             (
-                    arr.sel(
-                        powertrain=leg["powertrain"],
-                        size=leg["size"],
-                        year=leg["year"],
-                        parameter="TtW energy",
-                        value=0,
-                    )
-                    / fuel_lhv
-                    / fuel_density
-                    * 100
+                arr.sel(
+                    powertrain=leg["powertrain"],
+                    size=leg["size"],
+                    year=leg["year"],
+                    parameter="TtW energy",
+                    value=0,
+                )
+                / fuel_lhv
+                / fuel_density
+                * 100
             )
             .round(2)
             .values.item(0)
@@ -71,23 +72,23 @@ def fetch_energy_consumption(arr: xr.DataArray, leg: dict) -> dict:
 
         electricity_use = (
             (
-                    arr.sel(
-                        powertrain=leg["powertrain"],
-                        size=leg["size"],
-                        year=leg["year"],
-                        parameter="TtW energy, electric mode",
-                        value=0,
-                    )
-                    * arr.sel(
-                powertrain=leg["powertrain"],
-                size=leg["size"],
-                year=leg["year"],
-                parameter="electric utility factor",
-                value=0,
-            )
-                    / 3600
-                    / 1
-                    * 100
+                arr.sel(
+                    powertrain=leg["powertrain"],
+                    size=leg["size"],
+                    year=leg["year"],
+                    parameter="TtW energy, electric mode",
+                    value=0,
+                )
+                * arr.sel(
+                    powertrain=leg["powertrain"],
+                    size=leg["size"],
+                    year=leg["year"],
+                    parameter="electric utility factor",
+                    value=0,
+                )
+                / 3600
+                / 1
+                * 100
             )
             .round(2)
             .values.item(0)
@@ -95,23 +96,23 @@ def fetch_energy_consumption(arr: xr.DataArray, leg: dict) -> dict:
 
         fuel_use = (
             (
-                    arr.sel(
-                        powertrain=leg["powertrain"],
-                        size=leg["size"],
-                        year=leg["year"],
-                        parameter="TtW energy, combustion mode",
-                        value=0,
-                    )
-                    * arr.sel(
-                powertrain=leg["powertrain"],
-                size=leg["size"],
-                year=leg["year"],
-                parameter="electric utility factor",
-                value=0,
-            )
-                    / fuel_lhv
-                    / fuel_density
-                    * 100
+                arr.sel(
+                    powertrain=leg["powertrain"],
+                    size=leg["size"],
+                    year=leg["year"],
+                    parameter="TtW energy, combustion mode",
+                    value=0,
+                )
+                * arr.sel(
+                    powertrain=leg["powertrain"],
+                    size=leg["size"],
+                    year=leg["year"],
+                    parameter="electric utility factor",
+                    value=0,
+                )
+                / fuel_lhv
+                / fuel_density
+                * 100
             )
             .round(2)
             .values.item(0)
@@ -408,24 +409,14 @@ def set_battery_type(leg: dict) -> dict:
     """
 
     energy_storage = {
-        "electric": {
-            (
-                leg["powertrain"],
-                leg["size"],
-                leg["year"]
-            ): leg["battery type"]
-        }
+        "electric": {(leg["powertrain"], leg["size"], leg["year"]): leg["battery type"]}
     }
 
     if "battery capacity" in leg:
         energy_storage.update(
             {
                 "capacity": {
-                    (
-                        leg["powertrain"],
-                        leg["size"],
-                        leg["year"]
-                    ): leg[
+                    (leg["powertrain"], leg["size"], leg["year"]): leg[
                         "battery capacity"
                     ]
                 }
@@ -463,18 +454,17 @@ def set_energy_consumption(leg):
         if leg.get("fuel consumption"):
             return {
                 (leg["powertrain"], leg["size"], leg["year"]): (
-                                                                       leg["fuel consumption"] * fuel_density * fuel_lhv
-                                                               )
-                                                               / 100
+                    leg["fuel consumption"] * fuel_density * fuel_lhv
+                )
+                / 100
             }
 
         if leg.get("electricity consumption"):
             return {
                 (leg["powertrain"], leg["size"], leg["year"]): (
-                                                                       leg[
-                                                                           "electricity consumption"] * fuel_density * fuel_lhv
-                                                               )
-                                                               / 100
+                    leg["electricity consumption"] * fuel_density * fuel_lhv
+                )
+                / 100
             }
 
     else:
@@ -490,16 +480,8 @@ def set_payload_and_annual_mileage(leg: dict) -> dict:
     :return: dict
     """
     return {
-        "payload": {
-            leg["driving cycle"]: {
-                leg["size"]: leg["payload"]
-            }
-        },
-        "annual mileage": {
-            leg["driving cycle"]: {
-                leg["size"]: leg["annual mileage"]
-            }
-        },
+        "payload": {leg["driving cycle"]: {leg["size"]: leg["payload"]}},
+        "annual mileage": {leg["driving cycle"]: {leg["size"]: leg["annual mileage"]}},
     }
 
 
@@ -508,10 +490,4 @@ def set_target_range(leg):
         return leg["target range"]
     elif leg["vehicle"] == "Car" and leg.get("target range"):
         if leg["powertrain"] in ["BEV"]:
-            return {
-                (
-                    leg["powertrain"],
-                    leg["size"],
-                    leg["year"]
-                ): leg["target range"]
-            }
+            return {(leg["powertrain"], leg["size"], leg["year"]): leg["target range"]}
