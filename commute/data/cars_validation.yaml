@@ -791,7 +791,44 @@ Car:
         min: 0
         max: 0.75
         average: 0.47
-  power:
+  combustion power:
+    Micro:
+      min: 10
+      max: 30
+      average: 18.5
+    Mini:
+      min: 40
+      max: 80
+      average: 58
+    Small:
+      min: 50
+      max: 100
+      average: 80
+    Lower medium:
+      min: 80
+      max: 140
+      average: 100
+    Medium:
+      min: 100
+      max: 150
+      average: 134
+    Medium SUV:
+      min: 100
+      max: 150
+      average: 118
+    Large:
+      min: 120
+      max: 200
+      average: 151
+    Large SUV:
+      min: 120
+      max: 220
+      average: 167
+    Van:
+      min: 100
+      max: 160
+      average: 110
+  electric power:
     Micro:
       min: 10
       max: 30

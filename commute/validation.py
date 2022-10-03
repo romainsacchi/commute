@@ -44,14 +44,18 @@ def check_vehicle_availability(
     assert (
         vehicle_type in VEHICLE_ARCHETYPES
     ), f"Vehicle type {vehicle_type} not available."
+
     assert (
         size in VEHICLE_ARCHETYPES[vehicle_type]
     ), f"Size {size} not available for {vehicle_type}."
+
     assert (
         powertrain in VEHICLE_ARCHETYPES[vehicle_type][size]
     ), f"Powertrain {powertrain} not available for {size} {vehicle_type}."
+
     min_year = VEHICLE_ARCHETYPES[vehicle_type][size][powertrain]["year"]["min"]
     max_year = VEHICLE_ARCHETYPES[vehicle_type][size][powertrain]["year"]["max"]
+
     assert (
         min_year <= year <= max_year
     ), f"Year {year} not available for {powertrain} {size} {vehicle_type}."
@@ -161,11 +165,18 @@ def check_battery_type(vehicle_type: str, powertrain: str, battery_type: str) ->
 
         assert (
             battery_type in battery_types
-        ), f"Battery type {battery_type} not available for {vehicle_type}."
+        ), f"Battery type {battery_type} not available for {powertrain} {vehicle_type}."
 
-        return battery_type
+    else:
+        if vehicle_type in ["Car", "Truck", "Two wheeler"]:
+            battery_type = "NMC-622"
+        else:
+            if powertrain in ["BEV-opp", "BEV-motion"]:
+                battery_type = "LTO"
+            else:
+                battery_type = "NMC-622"
 
-    return None
+    return battery_type
 
 def check_fuel_blend(blend) -> None:
     """
@@ -243,7 +254,7 @@ def check_value(vehicle, size, powertrain, driving_cycle, variable, value, fetch
         return value
 
     if value:
-        assert min_value <= value <= max_value, f"{variable} {value} outside of bounds."
+        assert min_value <= value <= max_value, f"{variable} {value} outside of bounds: {min_value}-{max_value}."
         return value
 
     if fetch_value:
@@ -288,7 +299,10 @@ def check_driving_cycle(vehicle_type: str, driving_cycle: [str, None]) -> [str, 
             print(f"Driving cycle for {vehicle_type} specified, but will be ignored.")
             return None
     else:
-        return None
+        if vehicle_type in ["Car", "Truck"]:
+            raise ValueError(f"Driving cycle must be specified for {vehicle_type}.")
+        else:
+            return None
 
 
 def check_schema(commute_request: dict) -> None:
@@ -297,8 +311,6 @@ def check_schema(commute_request: dict) -> None:
     :param commute_request: commute request
 
     """
-
-    #print(check_country(commute_request["location"]))
 
     request_schema = Schema(
 
@@ -309,6 +321,8 @@ def check_schema(commute_request: dict) -> None:
             "distance": And(float, lambda n: 0 <= n <= 10000),
             "location": str,
             "return trip": bool,
+            "commute id": int,
+            "leg id": int,
             Optional("year"): And(int, lambda n: 2000 <= n <= 2050),
             Optional("fuel blend"): And(
                 dict,
@@ -317,7 +331,7 @@ def check_schema(commute_request: dict) -> None:
             Optional("electricity mix"): And(
                 list, lambda s: check_electricity_mix(s)
             ),
-            Optional("driving cycle"): str,
+            Optional("driving cycle"): Or(str, None),
             Optional("fuel consumption"): And(Use(float), lambda n: 0 <= n <= 200),
             Optional("electricity consumption"): And(Use(float), lambda n: 0 <= n <= 500),
             Optional("number of passengers"): And(
@@ -328,12 +342,15 @@ def check_schema(commute_request: dict) -> None:
             Optional("battery mass"): Or(And(Use(float), lambda n: 0 <= n <= 10000), None),
             Optional("energy storage replacement"): Or(And(Use(int), lambda n: 0 <= n <= 2), None),
             Optional("curb mass"): Or(And(Use(float), lambda n: 0 <= n <= 50000), None),
-            Optional("power"): Or(And(Use(float), lambda n: 0 <= n <= 1000), None),
+            Optional("payload"): Or(And(Use(float), lambda n: 0 <= n <= 28000), None),
+            Optional("electric power"): Or(And(Use(float), lambda n: 0 <= n <= 1000), None),
+            Optional("combustion power"): Or(And(Use(float), lambda n: 0 <= n <= 1000), None),
             Optional("electric utility factor"): Or(And(
                 float, lambda n: 0 <= n <= 1
             ), None),
             Optional("lifetime"): Or(And(Use(int), lambda n: 0 <= n <= 1500000), None),
             Optional("annual mileage"): Or(And(Use(int), lambda n: 0 <= n <= 150000), None),
+            Optional("target range"): Or(And(Use(int), lambda n: 0 <= n <= 1500), None),
         }
 
     )

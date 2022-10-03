@@ -414,7 +414,7 @@ Truck:
           max: 40
           average: 223.2
   electricity consumption:
-    BEV-depot:
+    BEV:
       3.5t:
         Urban delivery:
           min: 10
@@ -768,13 +768,13 @@ Truck:
       - NMC-811
       - NCA
       - LFP
-    BEV-depot:
+    BEV:
       - NMC-622
       - NMC-811
       - NCA
       - LFP
   battery capacity:
-    BEV-depot:
+    BEV:
       3.5t:
         Urban delivery:
           min: 40
@@ -826,7 +826,7 @@ Truck:
           max: 1000
           average: 802
   energy storage replacement:
-    BEV-depot:
+    BEV:
       3.5t:
         min: 0
         max: 2
@@ -876,7 +876,32 @@ Truck:
         min: 0
         max: 2
         average: 1
-  power:
+  combustion power:
+    3.5t:
+      min: 50
+      max: 200
+      average: 120
+    7.5t:
+      min: 70
+      max: 200
+      average: 140
+    18t:
+      min: 180
+      max: 400
+      average: 320
+    26t:
+      min: 260
+      max: 420
+      average: 367
+    32t:
+      min: 220
+      max: 500
+      average: 340
+    40t:
+      min: 270
+      max: 620
+      average: 420
+  electric power:
     3.5t:
       min: 50
       max: 200

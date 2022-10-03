@@ -1,5 +1,4 @@
 from datetime import date
-from collections import defaultdict
 from multiprocessing import Process, Manager
 
 from .validation import (
@@ -33,6 +32,7 @@ def validate_commute_request(commute_request: list) -> None:
 
         check_vehicle_availability(vehicle, powertrain, size, year)
         driving_cycle = check_driving_cycle(vehicle, leg.get("driving cycle"))
+        leg["driving cycle"] = driving_cycle
 
         leg["year"] = leg.get("year", date.today().year)
         leg["distance"] = leg.get("distance", 1.0)
@@ -51,7 +51,8 @@ def validate_commute_request(commute_request: list) -> None:
             "payload",
             "battery capacity",
             "curb mass",
-            "power",
+            "combustion power",
+            "electric power",
             "electric utility factor",
             "lifetime",
             "annual mileage",
@@ -64,23 +65,46 @@ def validate_commute_request(commute_request: list) -> None:
             )
 
             leg[var] = check_value(
-                vehicle, size, powertrain, driving_cycle, var, leg.get(var), fetch_value
+                vehicle,
+                size,
+                powertrain,
+                driving_cycle,
+                var,
+                leg.get(var),
+                fetch_value
             )
 
 
-def process_commute_requests(commute_requests: list) -> list:
+def process_commute_requests(commute_requests: list) -> dict:
     """
     Process a list of commute requests.
     """
 
-    for commute_request in commute_requests:
+    commute_requests = {i: x for i, x in enumerate(commute_requests)}
+    for commute_id, commute in commute_requests.items():
+        for leg_id, leg in enumerate(commute):
+            leg["commute id"] = commute_id
+            leg["leg id"] = leg_id
+
+    for commute_request in commute_requests.values():
         validate_commute_request(commute_request)
 
     commute_requests = dispatch(commute_requests)
 
     return commute_requests
 
-def dispatch(commute_requests: list) -> dict:
+def update_return_dict(commute_requests: dict, return_dict: list) -> dict:
+    for _, commute in commute_requests.items():
+        for leg in commute:
+            for result in return_dict:
+                if (
+                    result["commute id"] == leg["commute id"]
+                    and result["leg id"] == leg["leg id"]
+                ):
+                    leg.update(result)
+    return commute_requests
+
+def dispatch(commute_requests: dict) -> dict:
     """
     Dispatch a list of commute requests.
     """
@@ -96,8 +120,7 @@ def dispatch(commute_requests: list) -> dict:
     manager = Manager()
     return_dict = manager.list()
 
-
-    for commute_request in commute_requests:
+    for commute_request in commute_requests.values():
         for leg in commute_request:
             process = Process(
                 target=d_model[leg["vehicle"]],
@@ -113,4 +136,5 @@ def dispatch(commute_requests: list) -> dict:
     for j in jobs:
         j.join()
 
-    return return_dict
+
+    return update_return_dict(commute_requests, return_dict)

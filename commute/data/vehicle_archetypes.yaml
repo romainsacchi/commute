@@ -556,7 +556,7 @@ Bus:
 
 Truck:
   3.5t:
-    BEV-depot:
+    BEV:
       year:
         min: 2020
         max: 2050
@@ -581,7 +581,7 @@ Truck:
         min: 2020
         max: 2050
   7.5t:
-    BEV-depot:
+    BEV:
       year:
         min: 2020
         max: 2050
@@ -606,7 +606,7 @@ Truck:
         min: 2020
         max: 2050
   18t:
-    BEV-depot:
+    BEV:
       year:
         min: 2020
         max: 2050
@@ -631,7 +631,7 @@ Truck:
         min: 2020
         max: 2050
   26t:
-    BEV-depot:
+    BEV:
       year:
         min: 2020
         max: 2050
@@ -656,7 +656,7 @@ Truck:
         min: 2020
         max: 2050
   32t:
-    BEV-depot:
+    BEV:
       year:
         min: 2020
         max: 2050
@@ -681,7 +681,7 @@ Truck:
         min: 2020
         max: 2050
   40t:
-    BEV-depot:
+    BEV:
       year:
         min: 2020
         max: 2050

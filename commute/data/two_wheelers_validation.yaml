@@ -279,7 +279,29 @@ Two wheeler:
         min: 0
         max: 1
         average: 1
-  power:
+  combustion power:
+    ICEV-p:
+      Scooter <4kW:
+        min: 1
+        max: 4
+        average: 2.8
+      Scooter 4-11kW:
+        min: 4
+        max: 11
+        average: 8.8
+      Motorcycle 4-11kW:
+        min: 4
+        max: 11
+        average: 9
+      Motorcycle 11-35kW:
+        min: 11
+        max: 35
+        average: 20
+      Motorcycle >35kW:
+        min: 35
+        max: 120
+        average: 91
+  electric power:
     BEV:
       Kick-scooter:
         min: 0.1
@@ -317,27 +339,6 @@ Two wheeler:
         min: 35
         max: 70
         average: 49
-    ICEV-p:
-      Scooter <4kW:
-        min: 1
-        max: 4
-        average: 2.8
-      Scooter 4-11kW:
-        min: 4
-        max: 11
-        average: 8.8
-      Motorcycle 4-11kW:
-        min: 4
-        max: 11
-        average: 9
-      Motorcycle 11-35kW:
-        min: 11
-        max: 35
-        average: 20
-      Motorcycle >35kW:
-        min: 35
-        max: 120
-        average: 91
   curb mass:
     BEV:
       Kick-scooter:

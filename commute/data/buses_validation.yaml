@@ -346,7 +346,32 @@ Bus:
         min: 0
         max: 3
         average: 2
-  power:
+  combustion power:
+    9m:
+      min: 100
+      max: 150
+      average: 128
+    13m-city:
+      min: 100
+      max: 300
+      average: 204
+    13m-coach:
+      min: 200
+      max: 350
+      average: 280
+    13m-city-double:
+      min: 200
+      max: 350
+      average: 260
+    13m-coach-double:
+      min: 100
+      max: 300
+      average: 200
+    18m:
+      min: 200
+      max: 350
+      average: 320
+  electric power:
     9m:
       min: 100
       max: 150
