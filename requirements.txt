@@ -1,6 +1,6 @@
-carculator
-carculator_bus
-carculator_truck
-carculator_two_wheeler
+-e git+https://github.com/romainsacchi/carculator#egg=carculator
+-e git+https://github.com/romainsacchi/carculator_bus#egg=carculator_bus
+-e git+https://github.com/romainsacchi/carculator_truck#egg=carculator_truck
+-e git+https://github.com/romainsacchi/carculator_two_wheeler#egg=carculator_two_wheeler
 schema
 pyyaml

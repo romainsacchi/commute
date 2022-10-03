@@ -1,4 +1,4 @@
-from commute.calculation import (
+from commute.set_fetch_parameters import (
     generic_fuel_name,
     fetch_energy_consumption,
     adjust_input_parameters
