@@ -101,3 +101,6 @@ def bus_model(leg, return_list):
     leg = fetch_vehicle_specs(bus.array, leg)
 
     return_list.append(leg)
+
+def two_wheeler_model(leg, return_list):
+    return_list.append(leg)

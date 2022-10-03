@@ -364,8 +364,7 @@ def fetch_vehicle_specs(arr: xr.DataArray, leg: dict) -> dict:
     return leg
 
 
-def two_wheeler_model(leg, return_list):
-    return_list.append(leg)
+
 
 
 def adjust_input_parameters(arr: xr.DataArray, leg: dict) -> xr.DataArray:
