@@ -99,5 +99,6 @@ def bus_model(leg, return_list):
 
     return_list.append(leg)
 
+
 def two_wheeler_model(leg, return_list):
     return_list.append(leg)
