@@ -1,5 +1,6 @@
 # ``commute``
 
+[![Coverage Status](https://coveralls.io/repos/github/romainsacchi/commute/badge.svg?branch=master)](https://coveralls.io/github/romainsacchi/commute?branch=master)
 
 Prospective life cycle assessment of passenger and freight transport.
 
