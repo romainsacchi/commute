@@ -291,7 +291,9 @@ def check_country(country: str) -> str:
     raise ValueError(f"Country {country} not available.")
 
 
-def check_driving_cycle(vehicle_type: str, driving_cycle: Union[str, None]) -> Union[str, None]:
+def check_driving_cycle(
+    vehicle_type: str, driving_cycle: Union[str, None]
+) -> Union[str, None]:
     """
     Check if the driving cycle is valid.
     :param vehicle_type: vehicle type, e.g., Car, Bus, Truck

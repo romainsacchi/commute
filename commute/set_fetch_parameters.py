@@ -1,8 +1,9 @@
+from typing import Union
+
 import xarray as xr
 
 from . import DATA_DIR
 from .validation import FUELS, get_data
-from typing import Union
 
 VARIABLES_MAPPING_PATH = DATA_DIR / "variables_mapping.yaml"
 VARIABLES_MAP = get_data(VARIABLES_MAPPING_PATH)
