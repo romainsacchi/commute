@@ -109,13 +109,13 @@ def get_archetypes_from_variable(
                     for powertrain in VEHICLE_ARCHETYPES[vehicle][size].values():
                         min_year = powertrain["year"]["min"]
                         max_year = powertrain["year"]["max"]
-                        for year in range(min_year, max_year + 1):
-                            list_available_archetypes.extend(
-                                [
-                                    (vehicle, size, powertrain, year)
-                                    for year in range(min_year, max_year + 1)
-                                ]
-                            )
+
+                        list_available_archetypes.extend(
+                            [
+                                (vehicle, size, powertrain, year)
+                                for year in range(min_year, max_year + 1)
+                            ]
+                        )
 
     return list_available_archetypes
 
@@ -167,21 +167,18 @@ def check_battery_type(
             battery_types = get_vehicle_specs(vehicle_type)[vehicle_type][
                 "battery type"
             ][powertrain]
-        except KeyError:
-            raise KeyError(f"Powertrain {powertrain} does not have a battery.")
+        except KeyError as exc:
+            raise KeyError(f"Powertrain {powertrain} does not have a battery.") from exc
 
         assert (
             battery_type in battery_types
         ), f"Battery type {battery_type} not available for {powertrain} {vehicle_type}."
 
     else:
-        if vehicle_type in ["Car", "Truck", "Two wheeler"]:
-            battery_type = "NMC-622"
+        if powertrain in ["BEV-opp", "BEV-motion"]:
+            battery_type = "LTO"
         else:
-            if powertrain in ["BEV-opp", "BEV-motion"]:
-                battery_type = "LTO"
-            else:
-                battery_type = "NMC-622"
+            battery_type = "NMC-622"
 
     return battery_type
 
@@ -309,14 +306,13 @@ def check_driving_cycle(vehicle_type: str, driving_cycle: [str, None]) -> [str, 
                 driving_cycle in specs[vehicle_type]["driving cycle"]
             ), f"Driving cycle {driving_cycle} incorrect or not available for {vehicle_type}."
             return driving_cycle
-        else:
-            print(f"Driving cycle for {vehicle_type} specified, but will be ignored.")
-            return None
+
+        print(f"Driving cycle for {vehicle_type} specified, but will be ignored.")
+        return None
     else:
         if vehicle_type in ["Car", "Truck"]:
             raise ValueError(f"Driving cycle must be specified for {vehicle_type}.")
-        else:
-            return None
+        return None
 
 
 def check_schema(commute_request: dict) -> None:
