@@ -18,18 +18,13 @@ requirements:
     - python
     - setuptools
   run:
-    - scipy
-    - pyprind
-    - pandas
-    - xarray
-    - numpy
-    - klausen
-    - xlrd
-    - numexpr
-    - bw2io
-    - pycountry
-    - wurst
+    - schema
     - pyyaml
+  pypi:
+    -e git+https://github.com/romainsacchi/carculator#egg=carculator
+    -e git+https://github.com/romainsacchi/carculator_bus#egg=carculator_bus
+    -e git+https://github.com/romainsacchi/carculator_truck#egg=carculator_truck
+    -e git+https://github.com/romainsacchi/carculator_two_wheeler#egg=carculator_two_wheeler
 
 test:
   imports:
