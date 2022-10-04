@@ -2,6 +2,7 @@ import xarray as xr
 
 from . import DATA_DIR
 from .validation import FUELS, get_data
+from typing import Union
 
 VARIABLES_MAPPING_PATH = DATA_DIR / "variables_mapping.yaml"
 VARIABLES_MAP = get_data(VARIABLES_MAPPING_PATH)
@@ -423,7 +424,7 @@ def set_battery_type(leg: dict) -> dict:
     return energy_storage
 
 
-def set_driving_cycle(leg: dict) -> dict:
+def set_driving_cycle(leg: dict) -> Union[str, None]:
     """
     Sets the driving cycle for a given leg vehicle.
     Buses and two-wheelers do not have the choice
@@ -438,8 +439,8 @@ def set_driving_cycle(leg: dict) -> dict:
 
     if leg["vehicle"] == "Truck":
         return leg.get("driving cycle", "Urban delivery")
-
-    return None
+    else:
+        return None
 
 
 def set_energy_consumption(leg):

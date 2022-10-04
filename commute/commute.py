@@ -68,18 +68,18 @@ def process_commute_requests(commute_requests: list) -> dict:
     Process a list of commute requests.
     """
 
-    commute_requests = {i: x for i, x in enumerate(commute_requests)}
-    for commute_id, commute in commute_requests.items():
+    commute_requests_reformatted = {i: x for i, x in enumerate(commute_requests)}
+    for commute_id, commute in commute_requests_reformatted.items():
         for leg_id, leg in enumerate(commute):
             leg["commute id"] = commute_id
             leg["leg id"] = leg_id
 
-    for commute_request in commute_requests.values():
+    for commute_request in commute_requests_reformatted.values():
         validate_commute_request(commute_request)
 
-    commute_requests = dispatch(commute_requests)
+    commute_requests_reformatted = dispatch(commute_requests_reformatted)
 
-    return commute_requests
+    return commute_requests_reformatted
 
 
 def update_return_dict(commute_requests: dict, return_dict: list) -> dict:

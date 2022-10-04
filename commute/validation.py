@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Tuple, Union
 
 import numpy as np
 import yaml
@@ -63,7 +63,7 @@ def check_vehicle_availability(
 
 
 def get_archetypes_from_variable(
-    var: str, val: [str, int]
+    var: str, val: Union[str, int]
 ) -> List[Tuple[str, str, str, int]]:
     """
     :param var: variable to filter on, e.g., vehicle type, size, powertrain, year
@@ -157,7 +157,7 @@ LIST_POWERTRAINS = get_list_powertrains()
 
 def check_battery_type(
     vehicle_type: str, powertrain: str, battery_type: str
-) -> [str, None]:
+) -> Union[str, None]:
     """
     Check whether the battery type is available for a given vehicle type.
     """
@@ -291,7 +291,7 @@ def check_country(country: str) -> str:
     raise ValueError(f"Country {country} not available.")
 
 
-def check_driving_cycle(vehicle_type: str, driving_cycle: [str, None]) -> [str, None]:
+def check_driving_cycle(vehicle_type: str, driving_cycle: Union[str, None]) -> Union[str, None]:
     """
     Check if the driving cycle is valid.
     :param vehicle_type: vehicle type, e.g., Car, Bus, Truck
