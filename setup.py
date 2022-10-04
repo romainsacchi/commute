@@ -46,7 +46,7 @@ setup(
         "carculator_truck",
         "carculator_two_wheeler",
         "schema",
-        "pyyaml"
+        "pyyaml",
     ],
     url="https://github.com/romainsacchi/commute",
     description="Prospective environmental and economic life cycle assessment of passenger and freight transport",
