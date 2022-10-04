@@ -1,3 +1,9 @@
+"""
+This module contains the functions that call the different
+vehicle models and return the results.
+
+"""
+
 from carculator import CarInputParameters, CarModel
 from carculator import fill_xarray_from_input_parameters as fill_car_data
 from carculator_bus import BusInputParameters, BusModel

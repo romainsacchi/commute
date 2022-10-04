@@ -161,4 +161,34 @@ jobs:
           password: ${{ secrets.TEST_PYPI_PASSWORD }}
           repository_url: https://test.pypi.org/legacy/
           skip_existing: true
+  testconda:
+    name: (${{ matrix.python-version }}, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    needs: conda
 
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["ubuntu-latest"]
+        python-version: ["3.9"]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+          channels: conda-forge,cmutel,konstantinstadler,haasad,pascallesage,romainsacchi
+          allow-softlinks: true
+          channel-priority: strict
+          auto-update-conda: true
+          conda-build-version: 3.21.4
+          activate-environment: test
+
+      - name: Pull distribution 📦 from Anaconda
+        if: github.ref == 'refs/heads/master'
+        shell: bash -l {0}
+
+        run: |
+          conda install -c romainsacchi commute
+          conda update commute
+          conda install pytest
+          pytest
